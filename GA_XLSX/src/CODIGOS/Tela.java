@@ -107,6 +107,7 @@ public class Tela extends javax.swing.JFrame {
     public String senha_de_chamada = "19216811";
     public String senha_digitada = "";
     public boolean solicitar_senha = false;
+    public boolean habilitar_som = true;
     
     public MenuSobre about;
     
@@ -363,6 +364,9 @@ public class Tela extends javax.swing.JFrame {
                 /*SE A VEZ FOR DO 1º E O MESMO ESTIVER HABILITADO*/
                 if(v == 1 && !BTN2.isSelected()){
                     
+                    if(habilitar_som == true){
+                        play("/CODIGOS/Sons/002228");
+                    }
                     TEXTO_NOME_DA_VEZ.setText(PSL2[0]+" - "+PSL2[1]);
                     AT1++;
                     BTN2.setText(PSL2[0]+" - "+AT1);
@@ -372,6 +376,9 @@ public class Tela extends javax.swing.JFrame {
                 /*SE A VEZ FOR DO 2º E O MESMO ESTIVER HABILITADO*/
                 if(v == 2 && !BTN3.isSelected()){
                     
+                    if(habilitar_som == true){
+                        play("/CODIGOS/Sons/002583");
+                    }
                     TEXTO_NOME_DA_VEZ.setText(PSL3[0]+" - "+PSL3[1]);
                     AT2++;
                     BTN3.setText(PSL3[0]+" - "+AT2);
@@ -381,6 +388,9 @@ public class Tela extends javax.swing.JFrame {
                 /*SE A VEZ FOR DO 3º E O MESMO ESTIVER HABILITADO*/
                 if(v == 3 && !BTN4.isSelected()){
                     
+                    if(habilitar_som == true){
+                        play("/CODIGOS/Sons/002423");
+                    }
                     TEXTO_NOME_DA_VEZ.setText(PSL4[0]+" - "+PSL4[1]);
                     AT3++;
                     BTN4.setText(PSL4[0]+" - "+AT3);
@@ -394,7 +404,10 @@ public class Tela extends javax.swing.JFrame {
                 }       ////////////////////////////////////////////////////////////////////////
                 /*SE APENAS O 2º TÉCNICO ESTIVER HABILITADO*/
                 if(BTN4.isSelected() && BTN2.isSelected() && !BTN3.isSelected()){
-                    //JOptionPane.showMessageDialog(null,"iiiiiiii");
+                    
+                    if(habilitar_som == true){
+                        play("/CODIGOS/Sons/002583");
+                    }
                     TEXTO_NOME_DA_VEZ.setText(PSL3[0]+" - "+PSL3[1]);
                     AT2++;
                     BTN3.setText(PSL3[0]+" - "+AT2);
@@ -1321,6 +1334,18 @@ public class Tela extends javax.swing.JFrame {
                 if(!senha.equals(password.senha))      
                 {
                     
+                    if(habilitar_som == true){
+                        if(i == 0){
+                            play("/CODIGOS/Sons/primeira_tentativa");
+                        }else
+                        if(i == 1){
+                            play("/CODIGOS/Sons/segunda_tentativa");
+                        }else
+                        if(i == 2){
+                            play("/CODIGOS/Sons/terceira_tentativa");
+                        }
+                    }
+                    
                     JPasswordField jpf = new JPasswordField();
             
                     JOptionPane.showConfirmDialog(null,new Object[]{ jpf},"Warning "+(i+1)+"ª tentativa.",JOptionPane.OK_CANCEL_OPTION,JOptionPane.QUESTION_MESSAGE);
@@ -1331,7 +1356,9 @@ public class Tela extends javax.swing.JFrame {
             }
             if (!senha.equals(password.senha) || senha.equals(null))    
             {
-                play("/CODIGOS/Sons/senha_incorreta_ou_operacao_cancelada");//executa o arquivo wav
+                if(habilitar_som == true){
+                    play("/CODIGOS/Sons/senha_incorreta_ou_operacao_cancelada");//executa o arquivo wav
+                }
                 JOptionPane.showMessageDialog(null,"Senha incorreta ou operação cancelada","Aviso",JOptionPane.WARNING_MESSAGE);
             }
             else
