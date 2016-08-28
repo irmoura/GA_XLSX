@@ -7,8 +7,11 @@ package CODIGOS;
 
 import static CODIGOS.Planilha.PS;
 import static CODIGOS.Planilha.lerPlanilha;
+import java.applet.Applet;
+import java.applet.AudioClip;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
+import java.net.URL;
 import java.util.Calendar;
 import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
@@ -19,6 +22,22 @@ import javax.swing.Timer;
  * @author Ismael Ribeiro
  */
 public class Tela extends javax.swing.JFrame {
+    
+    public void play(String nomeDoAudio){
+        
+        URL url = getClass().getResource(nomeDoAudio+".wav");//wav
+        AudioClip audio = Applet.newAudioClip(url);
+        audio.play();
+        //audio.loop();
+}
+    
+    public void stop(String nomeDoAudio){
+        
+        URL url = getClass().getResource(nomeDoAudio+".wav");//wav
+        AudioClip audio = Applet.newAudioClip(url);
+        //audio.play();
+        audio.stop();
+}
     
     public static String[] PSL2;
     public static String[] PSL3;
@@ -1312,6 +1331,7 @@ public class Tela extends javax.swing.JFrame {
             }
             if (!senha.equals(password.senha) || senha.equals(null))    
             {
+                play("/CODIGOS/Sons/senha_incorreta_ou_operacao_cancelada");//executa o arquivo wav
                 JOptionPane.showMessageDialog(null,"Senha incorreta ou operação cancelada","Aviso",JOptionPane.WARNING_MESSAGE);
             }
             else
