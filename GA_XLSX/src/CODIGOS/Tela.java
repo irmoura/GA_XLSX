@@ -448,6 +448,8 @@ public class Tela extends javax.swing.JFrame {
         TEXTO_HORA = new javax.swing.JLabel();
         TEXTO_DESENVOLVEDOR = new javax.swing.JLabel();
         TEXTO_CRONOMETRO = new javax.swing.JLabel();
+        BOTAO_SOLICITAR_SENHA = new javax.swing.JToggleButton();
+        BOTAO_SOM = new javax.swing.JToggleButton();
         PAPEL_DE_PAREDE = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenuConfigurar = new javax.swing.JMenu();
@@ -567,6 +569,29 @@ public class Tela extends javax.swing.JFrame {
         TEXTO_CRONOMETRO.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         TEXTO_CRONOMETRO.setText("00:00:00");
         JanelaInternaPrincipal.add(TEXTO_CRONOMETRO, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 40, -1, -1));
+
+        BOTAO_SOLICITAR_SENHA.setIcon(new javax.swing.ImageIcon(getClass().getResource("/CODIGOS/Imagens/chave_1.png"))); // NOI18N
+        BOTAO_SOLICITAR_SENHA.setBorder(null);
+        BOTAO_SOLICITAR_SENHA.setBorderPainted(false);
+        BOTAO_SOLICITAR_SENHA.setContentAreaFilled(false);
+        BOTAO_SOLICITAR_SENHA.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BOTAO_SOLICITAR_SENHAActionPerformed(evt);
+            }
+        });
+        JanelaInternaPrincipal.add(BOTAO_SOLICITAR_SENHA, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 0, -1, -1));
+
+        BOTAO_SOM.setIcon(new javax.swing.ImageIcon(getClass().getResource("/CODIGOS/Imagens/som_habilitado.png"))); // NOI18N
+        BOTAO_SOM.setToolTipText("");
+        BOTAO_SOM.setBorder(null);
+        BOTAO_SOM.setBorderPainted(false);
+        BOTAO_SOM.setContentAreaFilled(false);
+        BOTAO_SOM.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BOTAO_SOMActionPerformed(evt);
+            }
+        });
+        JanelaInternaPrincipal.add(BOTAO_SOM, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 0, -1, -1));
 
         PAPEL_DE_PAREDE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/CODIGOS/Imagens/vistamizer-windows-vista-wallpaper-pack-14.jpg"))); // NOI18N
         PAPEL_DE_PAREDE.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1621,6 +1646,128 @@ public class Tela extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_BTN5MouseEntered
 
+    private void BOTAO_SOLICITAR_SENHAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BOTAO_SOLICITAR_SENHAActionPerformed
+        // TODO add your handling code here:
+        
+        Object[] options = { "Sim", "Não" };   
+        int opcao = JOptionPane.showOptionDialog(null,"Deseja ATIVAR/DESATIVAR senha para chamar cada Técnico ?","Aviso",
+        JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE, null, options, options[0]);   
+  
+        if (opcao != 0){
+        //JOptionPane.showMessageDialog(null,"");
+        }else{
+              
+            String senha = "";
+            int tentativas = 3;//Define o número de tentativas que o usuário terá para acertar a senha.
+            
+            for(int i=0;i<tentativas;i++)
+            {
+                if(!senha.equals(password.senha))      
+                {
+                    
+                    if(habilitar_som == true){
+                        if(i == 0){
+                            play("/CODIGOS/Sons/primeira_tentativa");
+                        }else
+                        if(i == 1){
+                            play("/CODIGOS/Sons/segunda_tentativa");
+                        }else
+                        if(i == 2){
+                            play("/CODIGOS/Sons/terceira_tentativa");
+                        }
+                    }
+                    
+                    JPasswordField jpf = new JPasswordField();
+            
+                    JOptionPane.showConfirmDialog(null,new Object[]{ jpf},"Warning "+(i+1)+"ª tentativa.",JOptionPane.OK_CANCEL_OPTION,JOptionPane.QUESTION_MESSAGE);
+        
+                    senha = new String(jpf.getPassword());
+                    
+                }    
+            }
+            if (!senha.equals(password.senha) || senha.equals(null))    
+            {
+                if(habilitar_som == true){
+                    play("/CODIGOS/Sons/senha_incorreta_ou_operacao_cancelada");//executa o arquivo wav
+                }
+                JOptionPane.showMessageDialog(null,"Senha incorreta ou operação cancelada","Aviso",JOptionPane.WARNING_MESSAGE);
+            }
+            else
+            {
+                  
+             if(solicitar_senha == false){
+                solicitar_senha = true;
+             }else
+             if(solicitar_senha == true){
+                solicitar_senha = false;
+             }
+                
+            }
+        }
+        
+    }//GEN-LAST:event_BOTAO_SOLICITAR_SENHAActionPerformed
+
+    private void BOTAO_SOMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BOTAO_SOMActionPerformed
+        // TODO add your handling code here:
+        
+        Object[] options = { "Sim", "Não" };   
+        int opcao = JOptionPane.showOptionDialog(null,"Deseja ATIVAR/DESATIVAR o som para chamar cada Técnico ?","Aviso",
+        JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE, null, options, options[0]);   
+  
+        if (opcao != 0){
+        //JOptionPane.showMessageDialog(null,"");
+        }else{
+              
+            String senha = "";
+            int tentativas = 3;//Define o número de tentativas que o usuário terá para acertar a senha.
+            
+            for(int i=0;i<tentativas;i++)
+            {
+                if(!senha.equals(password.senha))      
+                {
+                    
+                    if(habilitar_som == true){
+                        if(i == 0){
+                            play("/CODIGOS/Sons/primeira_tentativa");
+                        }else
+                        if(i == 1){
+                            play("/CODIGOS/Sons/segunda_tentativa");
+                        }else
+                        if(i == 2){
+                            play("/CODIGOS/Sons/terceira_tentativa");
+                        }
+                    }
+                    
+                    JPasswordField jpf = new JPasswordField();
+            
+                    JOptionPane.showConfirmDialog(null,new Object[]{ jpf},"Warning "+(i+1)+"ª tentativa.",JOptionPane.OK_CANCEL_OPTION,JOptionPane.QUESTION_MESSAGE);
+        
+                    senha = new String(jpf.getPassword());
+                    
+                }    
+            }
+            if (!senha.equals(password.senha) || senha.equals(null))    
+            {
+                if(habilitar_som == true){
+                    play("/CODIGOS/Sons/senha_incorreta_ou_operacao_cancelada");//executa o arquivo wav
+                }
+                JOptionPane.showMessageDialog(null,"Senha incorreta ou operação cancelada","Aviso",JOptionPane.WARNING_MESSAGE);
+            }
+            else
+            {
+                  
+             if(habilitar_som == false){
+                habilitar_som = true;
+             }else
+             if(habilitar_som == true){
+                habilitar_som = false;
+             }
+                
+            }
+        }
+        
+    }//GEN-LAST:event_BOTAO_SOMActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1660,6 +1807,8 @@ public class Tela extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JToggleButton BOTAO_SOLICITAR_SENHA;
+    private javax.swing.JToggleButton BOTAO_SOM;
     private javax.swing.JButton BOTAO_ZERAR;
     private javax.swing.JToggleButton BTN1;
     private javax.swing.JToggleButton BTN2;
