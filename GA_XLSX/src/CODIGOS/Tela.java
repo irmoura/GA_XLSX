@@ -13,6 +13,7 @@ import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.net.URL;
 import java.util.Calendar;
+import java.util.Random;
 import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.Timer;
@@ -52,7 +53,7 @@ public class Tela extends javax.swing.JFrame {
     public int AT3;//Atendimentos Técnico 3
     public int AT4;//Atendimentos Técnico 4
     public int AT5;//Atendimentos Técnico 5
-    public static int contador, contador2;
+    public static int contador, contador_piada;
     public int QDT;
     
     public int HCT1;
@@ -867,7 +868,18 @@ public class Tela extends javax.swing.JFrame {
         timer = new Timer(1000, (ActionEvent e) -> {
             
             contador++;
-     
+            contador_piada++;
+            
+            if(contador_piada == 5){//3600000
+                contador_piada = 0;
+                
+                Random numero_aleatorio = new Random();
+                int na = numero_aleatorio.nextInt(5);//1 A MAIS QUE O ULTIMO NUMERO DAS PIADAS
+                
+                play("/CODIGOS/Piadas/"+na);
+                
+                System.out.println(na);
+            }
             
             /////////////////////////SEGUNDOS/////////////////////////
                 if(contador < 10){
