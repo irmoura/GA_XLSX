@@ -870,14 +870,11 @@ public class Tela extends javax.swing.JFrame {
             contador++;
             contador_piada++;
             
-            if(contador_piada == 5){//3600000
+            if(contador_piada == 1800000){// 1 HORA: 3600000 MEIA/HORA: 1800000
                 contador_piada = 0;
-                
                 Random numero_aleatorio = new Random();
-                int na = numero_aleatorio.nextInt(5);//1 A MAIS QUE O ULTIMO NUMERO DAS PIADAS
-                
+                int na = numero_aleatorio.nextInt(14);//1 A MAIS QUE O ULTIMO NUMERO DAS PIADAS
                 play("/CODIGOS/Piadas/"+na);
-                
                 System.out.println(na);
             }
             
@@ -1071,6 +1068,15 @@ public class Tela extends javax.swing.JFrame {
                 BTN4.setSelected(true);
                 BTN4.setForeground(Color.red);
             }
+            
+            ////////////////////////////////////////////////////////////////////
+            /*ALARMES*/
+            if(horas.equals("15:30:00")){
+                play("/CODIGOS/Sons/hora_da_tapioca");
+            }
+            
+            ////////////////////////////////////////////////////////////////////
+            
             }
             
             
