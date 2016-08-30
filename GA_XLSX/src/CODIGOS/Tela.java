@@ -52,7 +52,7 @@ public class Tela extends javax.swing.JFrame {
     public int AT3;//Atendimentos Técnico 3
     public int AT4;//Atendimentos Técnico 4
     public int AT5;//Atendimentos Técnico 5
-    public int contador;
+    public static int contador, contador2;
     public int QDT;
     
     public int HCT1;
@@ -571,6 +571,7 @@ public class Tela extends javax.swing.JFrame {
         JanelaInternaPrincipal.add(TEXTO_CRONOMETRO, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 40, -1, -1));
 
         BOTAO_SOLICITAR_SENHA.setIcon(new javax.swing.ImageIcon(getClass().getResource("/CODIGOS/Imagens/chave_1.png"))); // NOI18N
+        BOTAO_SOLICITAR_SENHA.setToolTipText("Habilitar / Desabilitar Solicitação de Senha");
         BOTAO_SOLICITAR_SENHA.setBorder(null);
         BOTAO_SOLICITAR_SENHA.setBorderPainted(false);
         BOTAO_SOLICITAR_SENHA.setContentAreaFilled(false);
@@ -582,7 +583,7 @@ public class Tela extends javax.swing.JFrame {
         JanelaInternaPrincipal.add(BOTAO_SOLICITAR_SENHA, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 0, -1, -1));
 
         BOTAO_SOM.setIcon(new javax.swing.ImageIcon(getClass().getResource("/CODIGOS/Imagens/som_habilitado.png"))); // NOI18N
-        BOTAO_SOM.setToolTipText("");
+        BOTAO_SOM.setToolTipText("Habilitar / Desabilitar Som");
         BOTAO_SOM.setBorder(null);
         BOTAO_SOM.setBorderPainted(false);
         BOTAO_SOM.setContentAreaFilled(false);
@@ -866,7 +867,7 @@ public class Tela extends javax.swing.JFrame {
         timer = new Timer(1000, (ActionEvent e) -> {
             
             contador++;
-            
+     
             
             /////////////////////////SEGUNDOS/////////////////////////
                 if(contador < 10){
@@ -1697,9 +1698,11 @@ public class Tela extends javax.swing.JFrame {
                   
              if(solicitar_senha == false){
                 solicitar_senha = true;
+                BOTAO_SOLICITAR_SENHA.setIcon(new javax.swing.ImageIcon(getClass().getResource("/CODIGOS/Imagens/padlock.png"))); // NOI18N
              }else
              if(solicitar_senha == true){
                 solicitar_senha = false;
+                BOTAO_SOLICITAR_SENHA.setIcon(new javax.swing.ImageIcon(getClass().getResource("/CODIGOS/Imagens/chave_1.png")));
              }
                 
             }
@@ -1758,9 +1761,13 @@ public class Tela extends javax.swing.JFrame {
                   
              if(habilitar_som == false){
                 habilitar_som = true;
+                play("/CODIGOS/Sons/som_habilitado");//executa o arquivo wav
+                BOTAO_SOM.setIcon(new javax.swing.ImageIcon(getClass().getResource("/CODIGOS/Imagens/som_habilitado.png"))); // NOI18N
              }else
              if(habilitar_som == true){
                 habilitar_som = false;
+                play("/CODIGOS/Sons/som_desabilitado");//executa o arquivo wav
+                BOTAO_SOM.setIcon(new javax.swing.ImageIcon(getClass().getResource("/CODIGOS/Imagens/som_desabilitado.png"))); // NOI18N
              }
                 
             }
