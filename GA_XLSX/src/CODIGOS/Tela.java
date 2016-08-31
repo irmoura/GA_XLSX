@@ -111,6 +111,7 @@ public class Tela extends javax.swing.JFrame {
     public boolean habilitar_som = true;
     public boolean habilitar_piadas = true;
     public boolean habilitar_alarme = true;
+    public boolean falar_situacao = true;
     
     public MenuSobre about;
     
@@ -298,6 +299,9 @@ public class Tela extends javax.swing.JFrame {
                 /*NA VEZ DO TÉCNICO E O MESMO ESTIVER HABILITADO*/
                 if(v == 1 && !BTN1.isSelected()){
                     
+                    if(habilitar_som == true){
+                        play("/CODIGOS/Sons/002228");
+                    }
                     TEXTO_NOME_DA_VEZ.setText(PSL2[0]+" - "+PSL2[1]);
                     AT1++;
                     BTN1.setText(PSL2[0]+" - "+AT1);
@@ -305,6 +309,9 @@ public class Tela extends javax.swing.JFrame {
                     
                 }       if(v == 2 && !BTN2.isSelected()){
                     
+                    if(habilitar_som == true){
+                        play("/CODIGOS/Sons/002583");
+                    }
                     TEXTO_NOME_DA_VEZ.setText(PSL3[0]+" - "+PSL3[1]);
                     AT2++;
                     BTN2.setText(PSL3[0]+" - "+AT2);
@@ -312,6 +319,9 @@ public class Tela extends javax.swing.JFrame {
                     
                 }       if(v == 3 && !BTN3.isSelected()){ 
                     
+                    if(habilitar_som == true){
+                        play("/CODIGOS/Sons/002423");
+                    }
                     TEXTO_NOME_DA_VEZ.setText(PSL4[0]+" - "+PSL4[1]);
                     AT3++;
                     BTN3.setText(PSL4[0]+" - "+AT3);
@@ -319,6 +329,9 @@ public class Tela extends javax.swing.JFrame {
                     
                 }       if(v == 4 && !BTN4.isSelected()){ 
                     
+                    if(habilitar_som == true){
+                        play("/CODIGOS/Sons/003263");
+                    }
                     TEXTO_NOME_DA_VEZ.setText(PSL5[0]+" - "+PSL5[1]);
                     AT4++;
                     BTN4.setText(PSL5[0]+" - "+AT4);
@@ -1663,7 +1676,8 @@ public class Tela extends javax.swing.JFrame {
             
             funcao_principal();
             
-            String opcao = "";
+            if(falar_situacao == true){
+                String opcao = "";
             
             while(!(opcao.equals("0") || opcao.equals("1") || opcao.equals("2") || opcao.equals("3") ||
                     opcao.equals("4") || opcao.equals("5") || opcao.equals("6"))){
@@ -1699,6 +1713,7 @@ public class Tela extends javax.swing.JFrame {
             }else
             if(opcao.equals("6")){
                 play("/CODIGOS/Sons/troca_em_garantia");
+            }
             }
                 
         }
