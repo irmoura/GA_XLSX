@@ -9,11 +9,15 @@ import static CODIGOS.Planilha.PS;
 import static CODIGOS.Planilha.lerPlanilha;
 import java.applet.Applet;
 import java.applet.AudioClip;
+import java.awt.AWTException;
 import java.awt.Color;
+import java.awt.Robot;
 import java.awt.event.ActionEvent;
 import java.net.URL;
 import java.util.Calendar;
 import java.util.Random;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.Timer;
@@ -109,6 +113,8 @@ public class Tela extends javax.swing.JFrame {
     public String senha_digitada = "";
     public boolean solicitar_senha = false;
     public boolean habilitar_som = true;
+    public boolean habilitar_piadas = true;
+    public boolean habilitar_alarme = true;
     
     public MenuSobre about;
     
@@ -425,7 +431,7 @@ public class Tela extends javax.swing.JFrame {
                 break;
             default:
                 break;
-        }
+        }     
     }
     
     /**
@@ -451,6 +457,7 @@ public class Tela extends javax.swing.JFrame {
         TEXTO_CRONOMETRO = new javax.swing.JLabel();
         BOTAO_SOLICITAR_SENHA = new javax.swing.JToggleButton();
         BOTAO_SOM = new javax.swing.JToggleButton();
+        BOTAO_PIADAS = new javax.swing.JToggleButton();
         PAPEL_DE_PAREDE = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenuConfigurar = new javax.swing.JMenu();
@@ -564,7 +571,7 @@ public class Tela extends javax.swing.JFrame {
         JanelaInternaPrincipal.add(TEXTO_HORA, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 20, -1, -1));
 
         TEXTO_DESENVOLVEDOR.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        TEXTO_DESENVOLVEDOR.setText("Desenvolvedor : Ismael Ribeiro                                                                                                                               Versão: 250820162328");
+        TEXTO_DESENVOLVEDOR.setText("Desenvolvedor : Ismael Ribeiro                                                                                                                               Versão: 310820161021");
         JanelaInternaPrincipal.add(TEXTO_DESENVOLVEDOR, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 420, -1, -1));
 
         TEXTO_CRONOMETRO.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -594,6 +601,16 @@ public class Tela extends javax.swing.JFrame {
             }
         });
         JanelaInternaPrincipal.add(BOTAO_SOM, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 0, -1, -1));
+
+        BOTAO_PIADAS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/CODIGOS/Imagens/joker_icon.png"))); // NOI18N
+        BOTAO_PIADAS.setBorder(null);
+        BOTAO_PIADAS.setContentAreaFilled(false);
+        BOTAO_PIADAS.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BOTAO_PIADASActionPerformed(evt);
+            }
+        });
+        JanelaInternaPrincipal.add(BOTAO_PIADAS, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 0, -1, -1));
 
         PAPEL_DE_PAREDE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/CODIGOS/Imagens/vistamizer-windows-vista-wallpaper-pack-14.jpg"))); // NOI18N
         PAPEL_DE_PAREDE.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -868,14 +885,19 @@ public class Tela extends javax.swing.JFrame {
         timer = new Timer(1000, (ActionEvent e) -> {
             
             contador++;
-            contador_piada++;
+            
+            if(habilitar_piadas == true){
+               
+               contador_piada++;
             
             if(contador_piada == 1800){// 1 HORA: 3600 MEIA/HORA: 1800
-                contador_piada = 0;
-                Random numero_aleatorio = new Random();
-                int na = numero_aleatorio.nextInt(14);//1 A MAIS QUE O ULTIMO NUMERO DAS PIADAS
-                play("/CODIGOS/Piadas/"+na);
-                System.out.println(na);
+               contador_piada = 0;
+               Random numero_aleatorio = new Random();
+               int na = numero_aleatorio.nextInt(14);//1 A MAIS QUE O ULTIMO NUMERO DAS PIADAS
+               play("/CODIGOS/Piadas/"+na);
+               System.out.println(na);
+            }
+            
             }
             
             /////////////////////////SEGUNDOS/////////////////////////
@@ -1496,7 +1518,47 @@ public class Tela extends javax.swing.JFrame {
         }while(!senha_digitada.equals(senha_de_chamada));
             
         }else{
+            
             funcao_principal();
+            
+            String opcao = "";
+            
+            while(!(opcao.equals("0") || opcao.equals("1") || opcao.equals("2") || opcao.equals("3") ||
+                    opcao.equals("4") || opcao.equals("5") || opcao.equals("6"))){
+                
+                opcao = JOptionPane.showInputDialog(null,"0 - CHECKLIST"
+                                         + "\n1 - RECARGA DE CARTUCHO"
+                                         + "\n2 - SITUAÇÃO DIFERENCIADA"
+                                         + "\n3 - TIRAR DÚVIDA DE CLIENTE"
+                                         + "\n4 - GERAR NVD"
+                                         + "\n5 - GERAR NRD"
+                                         + "\n6 - TROCA EM GARANTIA"
+                                         ,"Digite o tipo de atendimento :",JOptionPane.QUESTION_MESSAGE);
+                
+            }
+            
+            if(opcao.equals("0")){
+                play("/CODIGOS/Sons/checklist");
+            }else
+            if(opcao.equals("1")){
+                play("/CODIGOS/Sons/recarga_de_cartucho");
+            }else
+            if(opcao.equals("2")){
+                play("/CODIGOS/Sons/situacao_diferenciada");
+            }else
+            if(opcao.equals("3")){
+                play("/CODIGOS/Sons/tirar_duvida_de_cliente");
+            }else
+            if(opcao.equals("4")){
+                play("/CODIGOS/Sons/NVD");
+            }else
+            if(opcao.equals("5")){
+                play("/CODIGOS/Sons/NRD");
+            }else
+            if(opcao.equals("6")){
+                play("/CODIGOS/Sons/troca_em_garantia");
+            }
+                
         }
             
         }
@@ -1793,6 +1855,72 @@ public class Tela extends javax.swing.JFrame {
         
     }//GEN-LAST:event_BOTAO_SOMActionPerformed
 
+    private void BOTAO_PIADASActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BOTAO_PIADASActionPerformed
+        // TODO add your handling code here:
+        
+        Object[] options = { "Sim", "Não" };   
+        int opcao = JOptionPane.showOptionDialog(null,"Deseja ATIVAR/DESATIVAR as piadas ?","Aviso",
+        JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE, null, options, options[0]);   
+  
+        if (opcao != 0){
+        //JOptionPane.showMessageDialog(null,"");
+        }else{
+              
+            String senha = "";
+            int tentativas = 3;//Define o número de tentativas que o usuário terá para acertar a senha.
+            
+            for(int i=0;i<tentativas;i++)
+            {
+                if(!senha.equals(password.senha))      
+                {
+                    
+                    if(habilitar_som == true){
+                        if(i == 0){
+                            play("/CODIGOS/Sons/primeira_tentativa");
+                        }else
+                        if(i == 1){
+                            play("/CODIGOS/Sons/segunda_tentativa");
+                        }else
+                        if(i == 2){
+                            play("/CODIGOS/Sons/terceira_tentativa");
+                        }
+                    }
+                    
+                    JPasswordField jpf = new JPasswordField();
+            
+                    JOptionPane.showConfirmDialog(null,new Object[]{ jpf},"Warning "+(i+1)+"ª tentativa.",JOptionPane.OK_CANCEL_OPTION,JOptionPane.QUESTION_MESSAGE);
+        
+                    senha = new String(jpf.getPassword());
+                    
+                }    
+            }
+            if (!senha.equals(password.senha) || senha.equals(null))    
+            {
+                if(habilitar_som == true){
+                    play("/CODIGOS/Sons/senha_incorreta_ou_operacao_cancelada");//executa o arquivo wav
+                }
+                JOptionPane.showMessageDialog(null,"Senha incorreta ou operação cancelada","Aviso",JOptionPane.WARNING_MESSAGE);
+            }
+            else
+            {
+                  
+             if(habilitar_piadas == false){
+                habilitar_piadas = true;
+                contador_piada = 0;
+                play("/CODIGOS/Sons/piadas_habilitadas");//executa o arquivo wav
+                BOTAO_PIADAS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/CODIGOS/Imagens/joker_icon.png"))); // NOI18N
+             }else
+             if(habilitar_piadas == true){
+                habilitar_piadas = false;
+                play("/CODIGOS/Sons/piadas_desabilitadas");//executa o arquivo wav
+                BOTAO_PIADAS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/CODIGOS/Imagens/joker-48.png"))); // NOI18N
+             }
+                
+            }
+        }
+        
+    }//GEN-LAST:event_BOTAO_PIADASActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1832,6 +1960,7 @@ public class Tela extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JToggleButton BOTAO_PIADAS;
     private javax.swing.JToggleButton BOTAO_SOLICITAR_SENHA;
     private javax.swing.JToggleButton BOTAO_SOM;
     private javax.swing.JButton BOTAO_ZERAR;
