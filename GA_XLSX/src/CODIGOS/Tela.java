@@ -908,6 +908,19 @@ public class Tela extends javax.swing.JFrame {
         if(Integer.parseInt(PS[22]) < 10 && Integer.parseInt(PS[23]) > 9){
         PSL4[7] = "0"+PS[22]+":"+PS[23]+":00";
         }
+        ////////////////////////////////////////////////////////////////////////
+        if(Integer.parseInt(PS[28]) < 10 && Integer.parseInt(PS[29]) < 10){
+        PSL5[7] = "0"+PS[28]+":0"+PS[29]+":00";
+        }else
+        if(Integer.parseInt(PS[28]) > 9 && Integer.parseInt(PS[29]) > 9){
+        PSL5[7] = PS[28]+":"+PS[29]+":00";
+        }else
+        if(Integer.parseInt(PS[28]) > 9 && Integer.parseInt(PS[29]) < 10){
+        PSL5[7] = PS[28]+":0"+PS[29]+":00";
+        }else
+        if(Integer.parseInt(PS[28]) < 10 && Integer.parseInt(PS[29]) > 9){
+        PSL5[7] = "0"+PS[28]+":"+PS[29]+":00";
+        }
             
         }
         
