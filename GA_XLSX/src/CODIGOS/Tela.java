@@ -253,7 +253,7 @@ public class Tela extends javax.swing.JFrame {
                     v = 0;
                 }       ////////////////////////////////////////////////////////////////////////
                 /*NA VEZ DO ÚLTIMO TÉCNICO E O MESMO ESTIVER DESABILITADO*/
-                if(v == 5 && BTN5.isSelected() || v == 5 && !BTN5.isEnabled()){
+                if(v == 5 && BTN5.isSelected() || v == 5 && !BTN5.isEnabled()){ 
                     v = 0;
                 }       ////////////////////////////////////////////////////////////////////////
                 TEXTO_TOTAL.setText("Atendimentos : "+TDA);
@@ -925,42 +925,49 @@ public class Tela extends javax.swing.JFrame {
         PSL3 = new String[8];
         PSL4 = new String[8];
         PSL5 = new String[8];
+        PSL6 = new String[8];
         
         /*    NOME    */
         PSL2[0] = PS[6];
         PSL3[0] = PS[12];
         PSL4[0] = PS[18];
         PSL5[0] = PS[24];
+        PSL6[0] = PS[30];
         
         /*EM*/
         PSL2[1] = PS[7];
         PSL3[1] = PS[13];
         PSL4[1] = PS[19];
         PSL5[1] = PS[25];
+        PSL6[1] = PS[31];
         
         /*HORA ENTRADA*/
         PSL2[2] = PS[8];
         PSL3[2] = PS[14];
         PSL4[2] = PS[20];
         PSL5[2] = PS[26];
+        PSL6[2] = PS[32];
         
         /*MINUTO ENTRADA*/
         PSL2[3] = PS[9];
         PSL3[3] = PS[15];
         PSL4[3] = PS[21];
         PSL5[3] = PS[27];
+        PSL6[3] = PS[33];
         
         /*HORA SAIDA*/
         PSL2[4] = PS[10];
         PSL3[4] = PS[16];
         PSL4[4] = PS[22];
         PSL5[4] = PS[28];
+        PSL6[4] = PS[34];
         
         /*MINUTO SAIDA*/
         PSL2[5] = PS[11];
         PSL3[5] = PS[17];
         PSL4[5] = PS[23];
         PSL5[5] = PS[29];
+        PSL6[5] = PS[35];
         
         /*   ENTRADA   */
         if(Integer.parseInt(PS[8]) < 10 && Integer.parseInt(PS[9]) < 10){
@@ -1013,6 +1020,19 @@ public class Tela extends javax.swing.JFrame {
         }else
         if(Integer.parseInt(PS[26]) > 9 && Integer.parseInt(PS[27]) < 10){
         PSL5[6] = PS[26]+":0"+PS[27]+":00";
+        }
+        ////////////////////////////////////////////////////////////////////////
+        if(Integer.parseInt(PS[32]) < 10 && Integer.parseInt(PS[33]) < 10){
+        PSL6[6] = "0"+PS[32]+":0"+PS[33]+":00";
+        }else
+        if(Integer.parseInt(PS[32]) > 9 && Integer.parseInt(PS[33]) > 9){
+        PSL6[6] = PS[32]+":"+PS[33]+":00";
+        }else
+        if(Integer.parseInt(PS[32]) < 10 && Integer.parseInt(PS[33]) > 9){
+        PSL6[6] = "0"+PS[32]+":"+PS[33]+":00";
+        }else
+        if(Integer.parseInt(PS[32]) > 9 && Integer.parseInt(PS[33]) < 10){
+        PSL6[6] = PS[32]+":0"+PS[33]+":00";
         }
         
         /*   SAIDA   */
@@ -1067,6 +1087,19 @@ public class Tela extends javax.swing.JFrame {
         if(Integer.parseInt(PS[28]) < 10 && Integer.parseInt(PS[29]) > 9){
         PSL5[7] = "0"+PS[28]+":"+PS[29]+":00";
         }
+        ////////////////////////////////////////////////////////////////////////
+        if(Integer.parseInt(PS[34]) < 10 && Integer.parseInt(PS[35]) < 10){
+        PSL6[7] = "0"+PS[34]+":0"+PS[35]+":00";
+        }else
+        if(Integer.parseInt(PS[34]) > 9 && Integer.parseInt(PS[35]) > 9){
+        PSL6[7] = PS[34]+":"+PS[35]+":00";
+        }else
+        if(Integer.parseInt(PS[34]) > 9 && Integer.parseInt(PS[35]) < 10){
+        PSL6[7] = PS[34]+":0"+PS[35]+":00";
+        }else
+        if(Integer.parseInt(PS[34]) < 10 && Integer.parseInt(PS[35]) > 9){
+        PSL6[7] = "0"+PS[34]+":"+PS[35]+":00";
+        }
             
         }
         
@@ -1077,9 +1110,6 @@ public class Tela extends javax.swing.JFrame {
         MST1 = Integer.parseInt(PSL2[5]);//Minuto Saida Técnico 1
         ET1 = PSL2[6];//Entrada Técnico 1
         ST1 = PSL2[7];//Saida Técnico 1
-        
-        //for(int i=0; i < TEC1.length; i++){ TEC1[i] = PSL2[i]; }
-        //System.arraycopy(PSL2, 0, TEC1, 0, TEC1.length);
         
         HCT2 = Integer.parseInt(PSL3[2]);//Hora Chegada Técnico 2
         MCT2 = Integer.parseInt(PSL3[3]);//Minuto Chegada Técnico 2
@@ -1568,7 +1598,7 @@ public class Tela extends javax.swing.JFrame {
             BTN5.setSelected(true);
             BTN5.setForeground(Color.red);
         }
-        
+//        
         }
         ////////////////////////////////////////////////////////////////////////
         else
