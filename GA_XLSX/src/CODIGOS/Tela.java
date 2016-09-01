@@ -97,7 +97,7 @@ public class Tela extends javax.swing.JFrame {
     public int minutos_int;
     public int horas_int;
     
-    public String arquivo = "CONFIG3";
+    public String arquivo = "CONFIG4";
     public String senha_de_chamada = "19216811";
     public String Senha = "CP1318RMKLZ";
     public String senha_digitada = "";
