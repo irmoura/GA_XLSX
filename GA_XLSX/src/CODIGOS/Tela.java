@@ -1430,7 +1430,7 @@ public class Tela extends javax.swing.JFrame {
             ////////////////////////////////////////////////////////////////////
             /*ALARMES*/
             if(horas.equals("15:30:00")){
-                play("/CODIGOS/Sons/hora_da_tapioca");
+                play("/CODIGOS/Sons/hora_da_pizza");
             }
             
             ////////////////////////////////////////////////////////////////////
