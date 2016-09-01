@@ -9,11 +9,15 @@ import static CODIGOS.Planilha.PS;
 import static CODIGOS.Planilha.lerPlanilha;
 import java.applet.Applet;
 import java.applet.AudioClip;
+import java.awt.AWTException;
 import java.awt.Color;
+import java.awt.Robot;
 import java.awt.event.ActionEvent;
 import java.net.URL;
 import java.util.Calendar;
 import java.util.Random;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.Timer;
@@ -93,7 +97,7 @@ public class Tela extends javax.swing.JFrame {
     public int minutos_int;
     public int horas_int;
     
-    public String arquivo = "CONFIG5";
+    public String arquivo = "CONFIG3";
     public String senha_de_chamada = "19216811";
     public String Senha = "CP1318RMKLZ";
     public String senha_digitada = "";
@@ -101,7 +105,7 @@ public class Tela extends javax.swing.JFrame {
     public boolean habilitar_som = true;
     public boolean habilitar_piadas = true;
     public boolean habilitar_alarme = true;
-    public boolean falar_situacao = false;
+    public boolean falar_situacao = true;
     
     public MenuSobre about;
    
@@ -1858,6 +1862,14 @@ public class Tela extends javax.swing.JFrame {
         }else{
             
             funcao_principal();
+            
+            try {
+                Robot bot = new Robot();
+                bot.delay(3000);
+            } catch (AWTException ex) {
+                Logger.getLogger(Tela.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
             System.out.println(v);
             
             if(falar_situacao == true){
