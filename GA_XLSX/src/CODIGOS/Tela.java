@@ -104,18 +104,16 @@ public class Tela extends javax.swing.JFrame {
     public int minutos_int;
     public int horas_int;
     
-    public String arquivo = "CONFIG4";
+    public String arquivo = "CONFIG5";
     public String senha_de_chamada = "19216811";
     public String senha_digitada = "";
     public boolean solicitar_senha = false;
-    public boolean habilitar_som = true;
+    public boolean habilitar_som = false;
     public boolean habilitar_piadas = true;
     public boolean habilitar_alarme = true;
-    public boolean falar_situacao = true;
+    public boolean falar_situacao = false;
     
     public MenuSobre about;
-    
-    //public String[] TEC1 = new String[8];
    
     /**
      * Creates new form Tela
@@ -260,12 +258,6 @@ public class Tela extends javax.swing.JFrame {
                 }       ////////////////////////////////////////////////////////////////////////
                 TEXTO_TOTAL.setText("Atendimentos : "+TDA);
                 
-                /*Codigos.Arquivo.gravar("Total de atendimentos: "+TDA,
-                PSL2[0]+" = "+AT1,
-                PSL3[0]+" = "+AT2,
-                PSL4[0]+" = "+AT3,
-                PSL5[0]+" = "+AT4,
-                PSL6[0]+" = "+AT5);*/
                 break;
         /**********************************************************************/
             case 4:
@@ -344,12 +336,6 @@ public class Tela extends javax.swing.JFrame {
                 }       ////////////////////////////////////////////////////////////////////////
                 TEXTO_TOTAL.setText("Atendimentos : "+TDA);
                 
-                /*Codigos.Arquivo.gravar("Total de atendimentos: "+TDA,
-                PSL2[0]+" = "+AT1,
-                PSL3[0]+" = "+AT2,
-                PSL4[0]+" = "+AT3,
-                PSL5[0]+" = "+AT4,
-                PSL6[0]+" = "+AT5);*/
                 break;
         /**********************************************************************/
             case 3:
@@ -433,10 +419,6 @@ public class Tela extends javax.swing.JFrame {
                 }       ////////////////////////////////////////////////////////////////////////
                 TEXTO_TOTAL.setText("Atendimentos : "+TDA);
                 
-                /*CODIGOS.Arquivo.gravar("Total de atendimentos: "+TDA,
-                PSL2[0]+" = "+AT1,
-                PSL3[0]+" = "+AT2,
-                PSL4[0]+" = "+AT3);*/
                 break;
             default:
                 break;
@@ -787,6 +769,157 @@ public class Tela extends javax.swing.JFrame {
         }
         
         if(QDT == 4){
+        
+        PSL2 = new String[8];
+        PSL3 = new String[8];
+        PSL4 = new String[8];
+        PSL5 = new String[8];
+        
+        /*    NOME    */
+        PSL2[0] = PS[6];
+        PSL3[0] = PS[12];
+        PSL4[0] = PS[18];
+        PSL5[0] = PS[24];
+        
+        /*EM*/
+        PSL2[1] = PS[7];
+        PSL3[1] = PS[13];
+        PSL4[1] = PS[19];
+        PSL5[1] = PS[25];
+        
+        /*HORA ENTRADA*/
+        PSL2[2] = PS[8];
+        PSL3[2] = PS[14];
+        PSL4[2] = PS[20];
+        PSL5[2] = PS[26];
+        
+        /*MINUTO ENTRADA*/
+        PSL2[3] = PS[9];
+        PSL3[3] = PS[15];
+        PSL4[3] = PS[21];
+        PSL5[3] = PS[27];
+        
+        /*HORA SAIDA*/
+        PSL2[4] = PS[10];
+        PSL3[4] = PS[16];
+        PSL4[4] = PS[22];
+        PSL5[4] = PS[28];
+        
+        /*MINUTO SAIDA*/
+        PSL2[5] = PS[11];
+        PSL3[5] = PS[17];
+        PSL4[5] = PS[23];
+        PSL5[5] = PS[29];
+        
+        /*   ENTRADA   */
+        if(Integer.parseInt(PS[8]) < 10 && Integer.parseInt(PS[9]) < 10){
+        PSL2[6] = "0"+PS[8]+":0"+PS[9]+":00";
+        }else
+        if(Integer.parseInt(PS[8]) > 9 && Integer.parseInt(PS[9]) > 9){
+        PSL2[6] = PS[8]+":"+PS[9]+":00";
+        }else
+        if(Integer.parseInt(PS[8]) < 10 && Integer.parseInt(PS[9]) > 9){
+        PSL2[6] = "0"+PS[8]+":"+PS[9]+":00";
+        }else
+        if(Integer.parseInt(PS[8]) > 9 && Integer.parseInt(PS[9]) < 10){
+        PSL2[6] = PS[8]+":0"+PS[9]+":00";
+        }
+        ////////////////////////////////////////////////////////////////////////
+        if(Integer.parseInt(PS[14]) < 10 && Integer.parseInt(PS[15]) < 10){
+        PSL3[6] = "0"+PS[14]+":0"+PS[15]+":00";
+        }else
+        if(Integer.parseInt(PS[14]) > 9 && Integer.parseInt(PS[15]) > 9){
+        PSL3[6] = PS[14]+":"+PS[15]+":00";
+        }else
+        if(Integer.parseInt(PS[14]) < 10 && Integer.parseInt(PS[15]) > 9){
+        PSL3[6] = "0"+PS[14]+":"+PS[15]+":00";
+        }else
+        if(Integer.parseInt(PS[14]) > 9 && Integer.parseInt(PS[15]) < 10){
+        PSL3[6] = PS[14]+":0"+PS[15]+":00";
+        }
+        ////////////////////////////////////////////////////////////////////////
+        if(Integer.parseInt(PS[20]) < 10 && Integer.parseInt(PS[21]) < 10){
+        PSL4[6] = "0"+PS[20]+":0"+PS[21]+":00";
+        }else
+        if(Integer.parseInt(PS[20]) > 9 && Integer.parseInt(PS[21]) > 9){
+        PSL4[6] = PS[20]+":"+PS[21]+":00";
+        }else
+        if(Integer.parseInt(PS[20]) < 10 && Integer.parseInt(PS[21]) > 9){
+        PSL4[6] = "0"+PS[20]+":"+PS[21]+":00";
+        }else
+        if(Integer.parseInt(PS[20]) > 9 && Integer.parseInt(PS[21]) < 10){
+        PSL4[6] = PS[20]+":0"+PS[21]+":00";
+        }
+        ////////////////////////////////////////////////////////////////////////
+        if(Integer.parseInt(PS[26]) < 10 && Integer.parseInt(PS[27]) < 10){
+        PSL5[6] = "0"+PS[26]+":0"+PS[27]+":00";
+        }else
+        if(Integer.parseInt(PS[26]) > 9 && Integer.parseInt(PS[27]) > 9){
+        PSL5[6] = PS[26]+":"+PS[27]+":00";
+        }else
+        if(Integer.parseInt(PS[26]) < 10 && Integer.parseInt(PS[27]) > 9){
+        PSL5[6] = "0"+PS[26]+":"+PS[27]+":00";
+        }else
+        if(Integer.parseInt(PS[26]) > 9 && Integer.parseInt(PS[27]) < 10){
+        PSL5[6] = PS[26]+":0"+PS[27]+":00";
+        }
+        
+        /*   SAIDA   */
+        if(Integer.parseInt(PS[10]) < 10 && Integer.parseInt(PS[11]) < 10){
+        PSL2[7] = "0"+PS[10]+":0"+PS[11]+":00";
+        }else
+        if(Integer.parseInt(PS[10]) > 9 && Integer.parseInt(PS[11]) > 9){
+        PSL2[7] = PS[10]+":"+PS[11]+":00";
+        }else
+        if(Integer.parseInt(PS[10]) > 9 && Integer.parseInt(PS[11]) < 10){
+        PSL2[7] = PS[10]+":0"+PS[11]+":00";
+        }else
+        if(Integer.parseInt(PS[10]) < 10 && Integer.parseInt(PS[11]) > 9){
+        PSL2[7] = "0"+PS[10]+":"+PS[11]+":00";
+        }
+        ////////////////////////////////////////////////////////////////////////
+        if(Integer.parseInt(PS[16]) < 10 && Integer.parseInt(PS[17]) < 10){
+        PSL3[7] = "0"+PS[16]+":0"+PS[17]+":00";
+        }else
+        if(Integer.parseInt(PS[16]) > 9 && Integer.parseInt(PS[17]) > 9){
+        PSL3[7] = PS[16]+":"+PS[17]+":00";
+        }else
+        if(Integer.parseInt(PS[16]) > 9 && Integer.parseInt(PS[17]) < 10){
+        PSL3[7] = PS[16]+":0"+PS[17]+":00";
+        }else
+        if(Integer.parseInt(PS[16]) < 10 && Integer.parseInt(PS[17]) > 9){
+        PSL3[7] = "0"+PS[16]+":"+PS[17]+":00";
+        }
+        ////////////////////////////////////////////////////////////////////////
+        if(Integer.parseInt(PS[22]) < 10 && Integer.parseInt(PS[23]) < 10){
+        PSL4[7] = "0"+PS[22]+":0"+PS[23]+":00";
+        }else
+        if(Integer.parseInt(PS[22]) > 9 && Integer.parseInt(PS[23]) > 9){
+        PSL4[7] = PS[22]+":"+PS[23]+":00";
+        }else
+        if(Integer.parseInt(PS[22]) > 9 && Integer.parseInt(PS[23]) < 10){
+        PSL4[7] = PS[22]+":0"+PS[23]+":00";
+        }else
+        if(Integer.parseInt(PS[22]) < 10 && Integer.parseInt(PS[23]) > 9){
+        PSL4[7] = "0"+PS[22]+":"+PS[23]+":00";
+        }
+        ////////////////////////////////////////////////////////////////////////
+        if(Integer.parseInt(PS[28]) < 10 && Integer.parseInt(PS[29]) < 10){
+        PSL5[7] = "0"+PS[28]+":0"+PS[29]+":00";
+        }else
+        if(Integer.parseInt(PS[28]) > 9 && Integer.parseInt(PS[29]) > 9){
+        PSL5[7] = PS[28]+":"+PS[29]+":00";
+        }else
+        if(Integer.parseInt(PS[28]) > 9 && Integer.parseInt(PS[29]) < 10){
+        PSL5[7] = PS[28]+":0"+PS[29]+":00";
+        }else
+        if(Integer.parseInt(PS[28]) < 10 && Integer.parseInt(PS[29]) > 9){
+        PSL5[7] = "0"+PS[28]+":"+PS[29]+":00";
+        }
+            
+        }
+        
+        if(QDT == 5){
         
         PSL2 = new String[8];
         PSL3 = new String[8];

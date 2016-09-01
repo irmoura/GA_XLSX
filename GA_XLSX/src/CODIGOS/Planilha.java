@@ -23,7 +23,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
  */
 public class Planilha {
     
-    public static String[] PS = new String[30];
+    public static String[] PS = new String[36];
     public static int count;
     
     public static void lerPlanilha(String arquivo){
