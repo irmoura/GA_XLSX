@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.util.Iterator;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -79,7 +80,8 @@ public class Planilha {
             }
             
         } catch (FileNotFoundException ex) {
-            Logger.getLogger(Planilha.class.getName()).log(Level.SEVERE, null, ex);
+              JOptionPane.showMessageDialog(null,"Arquivo "+arquivo+" não encontrado.","Warning",JOptionPane.WARNING_MESSAGE);
+              System.exit(0);
         } catch (IOException ex) {
             Logger.getLogger(Planilha.class.getName()).log(Level.SEVERE, null, ex);
         } finally {

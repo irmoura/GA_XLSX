@@ -29,15 +29,6 @@ public class Tela extends javax.swing.JFrame {
         URL url = getClass().getResource(nomeDoAudio+".wav");//wav
         AudioClip audio = Applet.newAudioClip(url);
         audio.play();
-        //audio.loop();
-}
-    
-    public void stop(String nomeDoAudio){
-        
-        URL url = getClass().getResource(nomeDoAudio+".wav");//wav
-        AudioClip audio = Applet.newAudioClip(url);
-        //audio.play();
-        audio.stop();
 }
     
     public static String[] PSL2;
@@ -96,8 +87,6 @@ public class Tela extends javax.swing.JFrame {
     public Calendar now;
     public Timer timer;
     
-    public Password password;
-    
     public String segundos;
     public String minutos;
     public String HC;//HORARIO CRONOMETRO
@@ -106,9 +95,10 @@ public class Tela extends javax.swing.JFrame {
     
     public String arquivo = "CONFIG5";
     public String senha_de_chamada = "19216811";
+    public String Senha = "CP1318RMKLZ";
     public String senha_digitada = "";
     public boolean solicitar_senha = false;
-    public boolean habilitar_som = false;
+    public boolean habilitar_som = true;
     public boolean habilitar_piadas = true;
     public boolean habilitar_alarme = true;
     public boolean falar_situacao = false;
@@ -173,7 +163,31 @@ public class Tela extends javax.swing.JFrame {
                     BTN5.setText(PSL6[0]+" - "+AT5);
                     TDA++;
                     
-                }       ////////////////////////////////////////////////////////////////////////
+                }
+                //POSSIVEL SOLUCAO PARA O ERRO GRAVE DO DIA 31/08/2016
+                /*AO INICIAR COM O ARQUIVO CONFIG5 E COM O 2º E 3º TÉCNICO DESABILITADO O ÚLTIMO TÉCNICO NÃO ERA CHAMADO, MESMO 
+                ESTANDO HABILITADO PARA SER CHAMADO.
+                A SOLUCAO PARCIAL FOI DEIXAR COMO COMENTARIO O CODIGO QUE INICIAVA O 3º TECNICO COMO DESABILITADO SE NAO ESTIVESSE
+                NO HORARIO DE TRABALHO, FAZENDO ASSIM 
+                COM QUE, MESMO INICIANDO EM VERMELHO ERA POSSIVEL HABILITAR O MESMO.*/
+                ////////////////////////////////////////////////////////////////////////
+                ////////////////////////////////////////////////////////////////////////
+                ////////////////////////////////////////////////////////////////////////
+                ////////////////////////////////////////////////////////////////////////
+                /*SE APENAS O 2º E O 3º TÉCNICO ESTIVEREM DESABILITADOS*/
+                if(v == 5 && !BTN1.isSelected() && BTN2.isSelected() && BTN3.isSelected() && !BTN4.isSelected() && !BTN5.isSelected()){
+                    
+                    TEXTO_NOME_DA_VEZ.setText(PSL6[0]+" - "+PSL6[1]);
+                    AT5++;
+                    BTN5.setText(PSL6[0]+" - "+AT5);
+                    TDA++;
+                    
+                    v = 0;
+                }
+                ////////////////////////////////////////////////////////////////////////
+                ////////////////////////////////////////////////////////////////////////
+                ////////////////////////////////////////////////////////////////////////
+                ////////////////////////////////////////////////////////////////////////
                 /*SE APENAS O 2º O 3º E O 4º TÉCNICO ESTIVEREM HABILITADOS*/
                 if(v == 5 && !BTN2.isSelected() && !BTN3.isSelected() && BTN1.isSelected() && !BTN4.isSelected() && BTN5.isSelected()){
                     v = v - 4;
@@ -1584,9 +1598,15 @@ public class Tela extends javax.swing.JFrame {
             BTN2.setForeground(Color.red);
         }
         if(hora == HST3 && minuto == MST3 || hora == HST3 && minuto >  MST3 || hora > HST3){
-//            BTN3.setEnabled(false);
+            ////////////////////////////////////////////////////////////////////
+            ////////////////////////////////////////////////////////////////////
+            ////////////////////////////////////////////////////////////////////
+            BTN3.setEnabled(false);//APARECEU UM ERRO GRAVE NO DIA 31/08/2016
             BTN3.setSelected(true);
             BTN3.setForeground(Color.red);
+            ////////////////////////////////////////////////////////////////////
+            ////////////////////////////////////////////////////////////////////
+            ////////////////////////////////////////////////////////////////////
         }
         if(hora == HST4 && minuto == MST4 || hora == HST4 && minuto >  MST4 || hora > HST4){
             BTN4.setEnabled(false);
@@ -1715,7 +1735,7 @@ public class Tela extends javax.swing.JFrame {
             
             for(int i=0;i<tentativas;i++)
             {
-                if(!senha.equals(password.senha))      
+                if(!senha.equals(Senha))      
                 {
                     
                     if(habilitar_som == true){
@@ -1738,7 +1758,7 @@ public class Tela extends javax.swing.JFrame {
                     
                 }    
             }
-            if (!senha.equals(password.senha) || senha.equals(null))    
+            if (!senha.equals(Senha) || senha.equals(null))    
             {
                 if(habilitar_som == true){
                     play("/CODIGOS/Sons/senha_incorreta_ou_operacao_cancelada");//executa o arquivo wav
@@ -1838,6 +1858,7 @@ public class Tela extends javax.swing.JFrame {
         }else{
             
             funcao_principal();
+            System.out.println(v);
             
             if(falar_situacao == true){
                 String opcao = "";
@@ -1955,14 +1976,14 @@ public class Tela extends javax.swing.JFrame {
             
             for(int i=0;i<tentativas;i++)
             {
-                if(!senha.equals(password.senha))      
+                if(!senha.equals(Senha))      
                 {
                     
                     senha = JOptionPane.showInputDialog(null,"Password: ","Warning "+(i+1)+"ª tentativa.",JOptionPane.OK_CANCEL_OPTION);
                     
                 }    
             }
-            if (!senha.equals(password.senha) || senha.equals(null))    
+            if (!senha.equals(Senha) || senha.equals(null))    
             {
                 JOptionPane.showMessageDialog(null,"Senha incorreta ou operação cancelada","Aviso",JOptionPane.WARNING_MESSAGE);
             }
@@ -2063,7 +2084,7 @@ public class Tela extends javax.swing.JFrame {
             
             for(int i=0;i<tentativas;i++)
             {
-                if(!senha.equals(password.senha))      
+                if(!senha.equals(Senha))      
                 {
                     
                     if(habilitar_som == true){
@@ -2086,7 +2107,7 @@ public class Tela extends javax.swing.JFrame {
                     
                 }    
             }
-            if (!senha.equals(password.senha) || senha.equals(null))    
+            if (!senha.equals(Senha) || senha.equals(null))    
             {
                 if(habilitar_som == true){
                     play("/CODIGOS/Sons/senha_incorreta_ou_operacao_cancelada");//executa o arquivo wav
@@ -2126,7 +2147,7 @@ public class Tela extends javax.swing.JFrame {
             
             for(int i=0;i<tentativas;i++)
             {
-                if(!senha.equals(password.senha))      
+                if(!senha.equals(Senha))      
                 {
                     
                     if(habilitar_som == true){
@@ -2149,7 +2170,7 @@ public class Tela extends javax.swing.JFrame {
                     
                 }    
             }
-            if (!senha.equals(password.senha) || senha.equals(null))    
+            if (!senha.equals(Senha) || senha.equals(null))    
             {
                 if(habilitar_som == true){
                     play("/CODIGOS/Sons/senha_incorreta_ou_operacao_cancelada");//executa o arquivo wav
@@ -2191,7 +2212,7 @@ public class Tela extends javax.swing.JFrame {
             
             for(int i=0;i<tentativas;i++)
             {
-                if(!senha.equals(password.senha))      
+                if(!senha.equals(Senha))      
                 {
                     
                     if(habilitar_som == true){
@@ -2214,7 +2235,7 @@ public class Tela extends javax.swing.JFrame {
                     
                 }    
             }
-            if (!senha.equals(password.senha) || senha.equals(null))    
+            if (!senha.equals(Senha) || senha.equals(null))    
             {
                 if(habilitar_som == true){
                     play("/CODIGOS/Sons/senha_incorreta_ou_operacao_cancelada");//executa o arquivo wav
