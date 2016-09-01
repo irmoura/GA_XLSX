@@ -1584,7 +1584,7 @@ public class Tela extends javax.swing.JFrame {
             BTN2.setForeground(Color.red);
         }
         if(hora == HST3 && minuto == MST3 || hora == HST3 && minuto >  MST3 || hora > HST3){
-            BTN3.setEnabled(false);
+//            BTN3.setEnabled(false);
             BTN3.setSelected(true);
             BTN3.setForeground(Color.red);
         }
