@@ -48,7 +48,7 @@ public class Tela extends javax.swing.JFrame {
     public int AT3;//Atendimentos Técnico 3
     public int AT4;//Atendimentos Técnico 4
     public int AT5;//Atendimentos Técnico 5
-    public static int contador, contador_piada;
+    public static int contador, contador_piada, contador_chamar_novamente;
     public int QDT;
     
     public int HCT1;
@@ -1876,6 +1876,8 @@ public class Tela extends javax.swing.JFrame {
             
             funcao_principal();
             
+            contador_chamar_novamente = 0;
+            
             try {
                 Robot bot = new Robot();
                 bot.delay(3000);
@@ -2290,7 +2292,13 @@ public class Tela extends javax.swing.JFrame {
     private void BOTAO_CHAMAR_NOVAMENTEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BOTAO_CHAMAR_NOVAMENTEActionPerformed
         // TODO add your handling code here:
         
-        if(habilitar_som == true){
+        contador_chamar_novamente++;
+        
+        if(contador_chamar_novamente == 1){
+            
+             if(BOTAO_ZERAR.isEnabled()){
+            
+            if(habilitar_som == true){
             if(QDT == 4){
                 if(v == 1){
                 play("/CODIGOS/Sons/002228");
@@ -2336,6 +2344,12 @@ public class Tela extends javax.swing.JFrame {
             
         }else{
             JOptionPane.showMessageDialog(null,"O som está desabilitado.","Aviso",JOptionPane.WARNING_MESSAGE);
+        }
+            
+        }else{
+            JOptionPane.showMessageDialog(null,"Inicie o atendimento.","Aviso",JOptionPane.WARNING_MESSAGE);
+        }
+            
         }
         
     }//GEN-LAST:event_BOTAO_CHAMAR_NOVAMENTEActionPerformed
