@@ -88,6 +88,7 @@ public class Tela extends javax.swing.JFrame {
     
     public int hora, minuto, segundo;
     public String horas;
+    public String opcao;
     public Calendar now;
     public Timer timer;
     
@@ -467,6 +468,7 @@ public class Tela extends javax.swing.JFrame {
         BOTAO_SOLICITAR_SENHA = new javax.swing.JToggleButton();
         BOTAO_SOM = new javax.swing.JToggleButton();
         BOTAO_PIADAS = new javax.swing.JToggleButton();
+        BOTAO_CHAMAR_NOVAMENTE = new javax.swing.JButton();
         PAPEL_DE_PAREDE = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenuConfigurar = new javax.swing.JMenu();
@@ -580,7 +582,7 @@ public class Tela extends javax.swing.JFrame {
         JanelaInternaPrincipal.add(TEXTO_HORA, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 20, -1, -1));
 
         TEXTO_DESENVOLVEDOR.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        TEXTO_DESENVOLVEDOR.setText("Desenvolvedor : Ismael Ribeiro                                                                                                                               Versão: 310820161021");
+        TEXTO_DESENVOLVEDOR.setText("Desenvolvedor : Ismael Ribeiro                                                                                                                               Versão: 020920161624");
         JanelaInternaPrincipal.add(TEXTO_DESENVOLVEDOR, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 420, -1, -1));
 
         TEXTO_CRONOMETRO.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -620,6 +622,17 @@ public class Tela extends javax.swing.JFrame {
             }
         });
         JanelaInternaPrincipal.add(BOTAO_PIADAS, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 0, -1, -1));
+
+        BOTAO_CHAMAR_NOVAMENTE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/CODIGOS/Imagens/repeat_icon.png"))); // NOI18N
+        BOTAO_CHAMAR_NOVAMENTE.setToolTipText("");
+        BOTAO_CHAMAR_NOVAMENTE.setBorder(null);
+        BOTAO_CHAMAR_NOVAMENTE.setContentAreaFilled(false);
+        BOTAO_CHAMAR_NOVAMENTE.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BOTAO_CHAMAR_NOVAMENTEActionPerformed(evt);
+            }
+        });
+        JanelaInternaPrincipal.add(BOTAO_CHAMAR_NOVAMENTE, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 0, -1, -1));
 
         PAPEL_DE_PAREDE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/CODIGOS/Imagens/vistamizer-windows-vista-wallpaper-pack-14.jpg"))); // NOI18N
         PAPEL_DE_PAREDE.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1873,7 +1886,7 @@ public class Tela extends javax.swing.JFrame {
             System.out.println(v);
             
             if(falar_situacao == true){
-                String opcao = "";
+                opcao = "";
             
             while(!(opcao.equals("0") || opcao.equals("1") || opcao.equals("2") || opcao.equals("3") ||
                     opcao.equals("4") || opcao.equals("5") || opcao.equals("6"))){
@@ -1882,9 +1895,9 @@ public class Tela extends javax.swing.JFrame {
                                          + "\n1 - RECARGA DE CARTUCHO"
                                          + "\n2 - SITUAÇÃO DIFERENCIADA"
                                          + "\n3 - TIRAR DÚVIDA DE CLIENTE"
-                                         + "\n4 - GERAR NVD"
-                                         + "\n5 - GERAR NRD"
-                                         + "\n6 - TROCA EM GARANTIA"
+                                         + "\n4 - GERAR CREDITO"
+                                         + "\n5 - TROCA EM GARANTIA"
+                                         + "\n6 - PLUS"
                                          ,"Digite o tipo de atendimento :",JOptionPane.QUESTION_MESSAGE);
                 
             }
@@ -1902,13 +1915,13 @@ public class Tela extends javax.swing.JFrame {
                 play("/CODIGOS/Sons/tirar_duvida_de_cliente");
             }else
             if(opcao.equals("4")){
-                play("/CODIGOS/Sons/NVD");
+                play("/CODIGOS/Sons/atendimento_para_gerar_credito");//GERAR CREDITO
             }else
             if(opcao.equals("5")){
-                play("/CODIGOS/Sons/NRD");
+                play("/CODIGOS/Sons/troca_em_garantia");
             }else
             if(opcao.equals("6")){
-                play("/CODIGOS/Sons/troca_em_garantia");
+                play("/CODIGOS/Sons/atendimento_para_plus");
             }
             }
                 
@@ -2274,6 +2287,59 @@ public class Tela extends javax.swing.JFrame {
         
     }//GEN-LAST:event_BOTAO_PIADASActionPerformed
 
+    private void BOTAO_CHAMAR_NOVAMENTEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BOTAO_CHAMAR_NOVAMENTEActionPerformed
+        // TODO add your handling code here:
+        
+        if(habilitar_som == true){
+            if(QDT == 4){
+                if(v == 1){
+                play("/CODIGOS/Sons/002228");
+                }else
+                if(v == 2){
+                play("/CODIGOS/Sons/002583");
+                }else
+                if(v == 3){
+                play("/CODIGOS/Sons/002423");
+                }else
+                if(v == 0){
+                play("/CODIGOS/Sons/003263");
+                }
+            }
+            try {
+                Robot bot = new Robot();
+                bot.delay(4000);
+            } catch (AWTException ex) {
+                Logger.getLogger(Tela.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+            if(opcao.equals("0")){
+                play("/CODIGOS/Sons/checklist");
+            }else
+            if(opcao.equals("1")){
+                play("/CODIGOS/Sons/recarga_de_cartucho");
+            }else
+            if(opcao.equals("2")){
+                play("/CODIGOS/Sons/situacao_diferenciada");
+            }else
+            if(opcao.equals("3")){
+                play("/CODIGOS/Sons/tirar_duvida_de_cliente");
+            }else
+            if(opcao.equals("4")){
+                play("/CODIGOS/Sons/atendimento_para_gerar_credito");//GERAR CREDITO
+            }else
+            if(opcao.equals("5")){
+                play("/CODIGOS/Sons/troca_em_garantia");
+            }else
+            if(opcao.equals("6")){
+                play("/CODIGOS/Sons/atendimento_para_plus");
+            }
+            
+        }else{
+            JOptionPane.showMessageDialog(null,"O som está desabilitado.","Aviso",JOptionPane.WARNING_MESSAGE);
+        }
+        
+    }//GEN-LAST:event_BOTAO_CHAMAR_NOVAMENTEActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -2313,6 +2379,7 @@ public class Tela extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BOTAO_CHAMAR_NOVAMENTE;
     private javax.swing.JToggleButton BOTAO_PIADAS;
     private javax.swing.JToggleButton BOTAO_SOLICITAR_SENHA;
     private javax.swing.JToggleButton BOTAO_SOM;
