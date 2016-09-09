@@ -35,6 +35,91 @@ public class Tela extends javax.swing.JFrame {
         audio.play();
 }
     
+    public void chamar_Tecnico(String OPCAO){
+        ////////////////////////////////////////////////////////////////////////
+        /*SE NENHUM BOTAO ESTIVER HABILITADO*/
+        if((BTN1.isSelected() && BTN2.isSelected() && BTN3.isSelected() && BTN4.isSelected() && BTN5.isSelected()) ||
+          (!BTN1.isEnabled() && !BTN2.isEnabled() && !BTN3.isEnabled() && !BTN4.isEnabled() && !BTN5.isEnabled())){
+            JOptionPane.showMessageDialog(null,"Habilite pelo menos um Técnico.","Aviso",JOptionPane.WARNING_MESSAGE);
+        }////////////////////////////////////////////////////////////////////////
+        else{
+            
+        int tentativas = 1;
+        
+        if(solicitar_senha == true){
+        
+        do{
+            
+        JPasswordField jpf = new JPasswordField();
+            
+        JOptionPane.showConfirmDialog(null,new Object[]{ jpf}, tentativas+"ª Tentativa, Digite a senha :",JOptionPane.OK_CANCEL_OPTION,JOptionPane.QUESTION_MESSAGE);
+        
+        senha_digitada = new String(jpf.getPassword());
+        
+        if(senha_digitada.equals(senha_de_chamada)){
+            funcao_principal();
+        }else
+        if(!senha_digitada.equals(senha_de_chamada) && !senha_digitada.equals("")){
+            JOptionPane.showMessageDialog(null,"Senha incorreta.","                                    "+
+                     "Warning",JOptionPane.WARNING_MESSAGE);
+            tentativas++;
+        }else
+        if(senha_digitada.equals("")){
+            JOptionPane.showMessageDialog(null,"Digite algo ....","                                    "+
+                     "Warning",JOptionPane.WARNING_MESSAGE);
+            tentativas++;
+        }
+        }while(!senha_digitada.equals(senha_de_chamada));
+            
+        }else{
+            
+            funcao_principal();
+            
+            contador_chamar_novamente = 0;
+            
+            try {
+                Robot bot = new Robot();
+                bot.delay(3000);
+            } catch (AWTException ex) {
+                Logger.getLogger(Tela.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+            System.out.println(v);
+            
+            if(falar_situacao == true){
+                opcao = "";
+                
+                opcao = OPCAO;
+                
+            
+            if(opcao.equals("0")){
+                play("/CODIGOS/Sons/checklist");
+            }else
+            if(opcao.equals("1")){
+                play("/CODIGOS/Sons/recarga_de_cartucho");
+            }else
+            if(opcao.equals("2")){
+                play("/CODIGOS/Sons/situacao_diferenciada");
+            }else
+            if(opcao.equals("3")){
+                play("/CODIGOS/Sons/tirar_duvida_de_cliente");
+            }else
+            if(opcao.equals("4")){
+                play("/CODIGOS/Sons/atendimento_para_gerar_credito");//GERAR CREDITO
+            }else
+            if(opcao.equals("5")){
+                play("/CODIGOS/Sons/troca_em_garantia");
+            }else
+            if(opcao.equals("6")){
+                play("/CODIGOS/Sons/atendimento_para_plus");
+            }
+            }
+                
+        }
+            
+        }
+    }
+    
     public static String[] PSL2;
     public static String[] PSL3;
     public static String[] PSL4;
@@ -469,6 +554,13 @@ public class Tela extends javax.swing.JFrame {
         BOTAO_SOM = new javax.swing.JToggleButton();
         BOTAO_PIADAS = new javax.swing.JToggleButton();
         BOTAO_CHAMAR_NOVAMENTE = new javax.swing.JButton();
+        BTN_CHECKLIST = new javax.swing.JButton();
+        BTN_RECARGA = new javax.swing.JButton();
+        BTN_SITU_DIFE = new javax.swing.JButton();
+        BTN_TIRA_DUVI = new javax.swing.JButton();
+        BTN_GERAR_CRED = new javax.swing.JButton();
+        BTN_TROCA_GARAN = new javax.swing.JButton();
+        BTN_PLUS = new javax.swing.JButton();
         PAPEL_DE_PAREDE = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenuConfigurar = new javax.swing.JMenu();
@@ -504,7 +596,7 @@ public class Tela extends javax.swing.JFrame {
                 BTN1MouseEntered(evt);
             }
         });
-        JanelaInternaPrincipal.add(BTN1, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 370, -1, -1));
+        JanelaInternaPrincipal.add(BTN1, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 110, -1, -1));
 
         BTN2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         BTN2.setText("Técnico 2");
@@ -517,7 +609,7 @@ public class Tela extends javax.swing.JFrame {
                 BTN2MouseEntered(evt);
             }
         });
-        JanelaInternaPrincipal.add(BTN2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 370, -1, -1));
+        JanelaInternaPrincipal.add(BTN2, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 160, -1, -1));
 
         BTN3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         BTN3.setText("Técnico 3");
@@ -530,7 +622,7 @@ public class Tela extends javax.swing.JFrame {
                 BTN3MouseEntered(evt);
             }
         });
-        JanelaInternaPrincipal.add(BTN3, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 370, -1, -1));
+        JanelaInternaPrincipal.add(BTN3, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 210, -1, -1));
 
         BTN4.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         BTN4.setText("Técnico 4");
@@ -544,7 +636,7 @@ public class Tela extends javax.swing.JFrame {
                 BTN4MouseEntered(evt);
             }
         });
-        JanelaInternaPrincipal.add(BTN4, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 370, -1, -1));
+        JanelaInternaPrincipal.add(BTN4, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 260, -1, -1));
 
         BTN5.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         BTN5.setText("Técnico 5");
@@ -557,11 +649,11 @@ public class Tela extends javax.swing.JFrame {
                 BTN5MouseEntered(evt);
             }
         });
-        JanelaInternaPrincipal.add(BTN5, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 370, -1, -1));
+        JanelaInternaPrincipal.add(BTN5, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 310, -1, -1));
 
         TEXTO_NOME_DA_VEZ.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
         TEXTO_NOME_DA_VEZ.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        JanelaInternaPrincipal.add(TEXTO_NOME_DA_VEZ, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 680, 90));
+        JanelaInternaPrincipal.add(TEXTO_NOME_DA_VEZ, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 680, 90));
 
         BOTAO_ZERAR.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         BOTAO_ZERAR.setText("ZERAR");
@@ -633,6 +725,83 @@ public class Tela extends javax.swing.JFrame {
             }
         });
         JanelaInternaPrincipal.add(BOTAO_CHAMAR_NOVAMENTE, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 0, -1, -1));
+
+        BTN_CHECKLIST.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        BTN_CHECKLIST.setText("CHECKLIST");
+        BTN_CHECKLIST.setBorder(null);
+        BTN_CHECKLIST.setContentAreaFilled(false);
+        BTN_CHECKLIST.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTN_CHECKLISTActionPerformed(evt);
+            }
+        });
+        JanelaInternaPrincipal.add(BTN_CHECKLIST, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, -1, -1));
+
+        BTN_RECARGA.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        BTN_RECARGA.setText("RECARGA DE CARTUCHO");
+        BTN_RECARGA.setBorder(null);
+        BTN_RECARGA.setContentAreaFilled(false);
+        BTN_RECARGA.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTN_RECARGAActionPerformed(evt);
+            }
+        });
+        JanelaInternaPrincipal.add(BTN_RECARGA, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, -1, -1));
+
+        BTN_SITU_DIFE.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        BTN_SITU_DIFE.setText("SITUAÇÃO DIFERENCIADA");
+        BTN_SITU_DIFE.setBorder(null);
+        BTN_SITU_DIFE.setContentAreaFilled(false);
+        BTN_SITU_DIFE.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTN_SITU_DIFEActionPerformed(evt);
+            }
+        });
+        JanelaInternaPrincipal.add(BTN_SITU_DIFE, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, -1, -1));
+
+        BTN_TIRA_DUVI.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        BTN_TIRA_DUVI.setText("TIRAR DÚVIDA DE CLIENTE");
+        BTN_TIRA_DUVI.setBorder(null);
+        BTN_TIRA_DUVI.setContentAreaFilled(false);
+        BTN_TIRA_DUVI.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTN_TIRA_DUVIActionPerformed(evt);
+            }
+        });
+        JanelaInternaPrincipal.add(BTN_TIRA_DUVI, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, -1, -1));
+
+        BTN_GERAR_CRED.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        BTN_GERAR_CRED.setText("GERAR CRÉDITO");
+        BTN_GERAR_CRED.setBorder(null);
+        BTN_GERAR_CRED.setContentAreaFilled(false);
+        BTN_GERAR_CRED.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTN_GERAR_CREDActionPerformed(evt);
+            }
+        });
+        JanelaInternaPrincipal.add(BTN_GERAR_CRED, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, -1, -1));
+
+        BTN_TROCA_GARAN.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        BTN_TROCA_GARAN.setText("TROCA EM GARANTIA");
+        BTN_TROCA_GARAN.setBorder(null);
+        BTN_TROCA_GARAN.setContentAreaFilled(false);
+        BTN_TROCA_GARAN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTN_TROCA_GARANActionPerformed(evt);
+            }
+        });
+        JanelaInternaPrincipal.add(BTN_TROCA_GARAN, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 310, -1, -1));
+
+        BTN_PLUS.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        BTN_PLUS.setText("PLUS");
+        BTN_PLUS.setBorder(null);
+        BTN_PLUS.setContentAreaFilled(false);
+        BTN_PLUS.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTN_PLUSActionPerformed(evt);
+            }
+        });
+        JanelaInternaPrincipal.add(BTN_PLUS, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 340, -1, -1));
 
         PAPEL_DE_PAREDE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/CODIGOS/Imagens/vistamizer-windows-vista-wallpaper-pack-14.jpg"))); // NOI18N
         PAPEL_DE_PAREDE.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1837,100 +2006,6 @@ public class Tela extends javax.swing.JFrame {
     private void PAPEL_DE_PAREDEMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PAPEL_DE_PAREDEMouseClicked
         // TODO add your handling code here:
         
-        ////////////////////////////////////////////////////////////////////////
-        /*SE NENHUM BOTAO ESTIVER HABILITADO*/
-        if((BTN1.isSelected() && BTN2.isSelected() && BTN3.isSelected() && BTN4.isSelected() && BTN5.isSelected()) ||
-          (!BTN1.isEnabled() && !BTN2.isEnabled() && !BTN3.isEnabled() && !BTN4.isEnabled() && !BTN5.isEnabled())){
-            JOptionPane.showMessageDialog(null,"Habilite pelo menos um Técnico.","Aviso",JOptionPane.WARNING_MESSAGE);
-        }////////////////////////////////////////////////////////////////////////
-        else{
-            
-        int tentativas = 1;
-        
-        if(solicitar_senha == true){
-        
-        do{
-            
-        JPasswordField jpf = new JPasswordField();
-            
-        JOptionPane.showConfirmDialog(null,new Object[]{ jpf}, tentativas+"ª Tentativa, Digite a senha :",JOptionPane.OK_CANCEL_OPTION,JOptionPane.QUESTION_MESSAGE);
-        
-        senha_digitada = new String(jpf.getPassword());
-        
-        if(senha_digitada.equals(senha_de_chamada)){
-            funcao_principal();
-        }else
-        if(!senha_digitada.equals(senha_de_chamada) && !senha_digitada.equals("")){
-            JOptionPane.showMessageDialog(null,"Senha incorreta.","                                    "+
-                     "Warning",JOptionPane.WARNING_MESSAGE);
-            tentativas++;
-        }else
-        if(senha_digitada.equals("")){
-            JOptionPane.showMessageDialog(null,"Digite algo ....","                                    "+
-                     "Warning",JOptionPane.WARNING_MESSAGE);
-            tentativas++;
-        }
-        }while(!senha_digitada.equals(senha_de_chamada));
-            
-        }else{
-            
-            funcao_principal();
-            
-            contador_chamar_novamente = 0;
-            
-            try {
-                Robot bot = new Robot();
-                bot.delay(3000);
-            } catch (AWTException ex) {
-                Logger.getLogger(Tela.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            
-            System.out.println(v);
-            
-            if(falar_situacao == true){
-                opcao = "";
-            
-            while(!(opcao.equals("0") || opcao.equals("1") || opcao.equals("2") || opcao.equals("3") ||
-                    opcao.equals("4") || opcao.equals("5") || opcao.equals("6"))){
-                
-                opcao = JOptionPane.showInputDialog(null,"0 - CHECKLIST"
-                                         + "\n1 - RECARGA DE CARTUCHO"
-                                         + "\n2 - SITUAÇÃO DIFERENCIADA"
-                                         + "\n3 - TIRAR DÚVIDA DE CLIENTE"
-                                         + "\n4 - GERAR CREDITO"
-                                         + "\n5 - TROCA EM GARANTIA"
-                                         + "\n6 - PLUS"
-                                         ,"Digite o tipo de atendimento :",JOptionPane.QUESTION_MESSAGE);
-                
-            }
-            
-            if(opcao.equals("0")){
-                play("/CODIGOS/Sons/checklist");
-            }else
-            if(opcao.equals("1")){
-                play("/CODIGOS/Sons/recarga_de_cartucho");
-            }else
-            if(opcao.equals("2")){
-                play("/CODIGOS/Sons/situacao_diferenciada");
-            }else
-            if(opcao.equals("3")){
-                play("/CODIGOS/Sons/tirar_duvida_de_cliente");
-            }else
-            if(opcao.equals("4")){
-                play("/CODIGOS/Sons/atendimento_para_gerar_credito");//GERAR CREDITO
-            }else
-            if(opcao.equals("5")){
-                play("/CODIGOS/Sons/troca_em_garantia");
-            }else
-            if(opcao.equals("6")){
-                play("/CODIGOS/Sons/atendimento_para_plus");
-            }
-            }
-                
-        }
-            
-        }
-        
     }//GEN-LAST:event_PAPEL_DE_PAREDEMouseClicked
 
     private void BTN1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BTN1MouseClicked
@@ -2354,6 +2429,41 @@ public class Tela extends javax.swing.JFrame {
         
     }//GEN-LAST:event_BOTAO_CHAMAR_NOVAMENTEActionPerformed
 
+    private void BTN_CHECKLISTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_CHECKLISTActionPerformed
+        // TODO add your handling code here:
+        chamar_Tecnico("0");
+    }//GEN-LAST:event_BTN_CHECKLISTActionPerformed
+
+    private void BTN_RECARGAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_RECARGAActionPerformed
+        // TODO add your handling code here:
+        chamar_Tecnico("1");
+    }//GEN-LAST:event_BTN_RECARGAActionPerformed
+
+    private void BTN_SITU_DIFEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_SITU_DIFEActionPerformed
+        // TODO add your handling code here:
+        chamar_Tecnico("2");
+    }//GEN-LAST:event_BTN_SITU_DIFEActionPerformed
+
+    private void BTN_TIRA_DUVIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_TIRA_DUVIActionPerformed
+        // TODO add your handling code here:
+        chamar_Tecnico("3");
+    }//GEN-LAST:event_BTN_TIRA_DUVIActionPerformed
+
+    private void BTN_GERAR_CREDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_GERAR_CREDActionPerformed
+        // TODO add your handling code here:
+        chamar_Tecnico("4");
+    }//GEN-LAST:event_BTN_GERAR_CREDActionPerformed
+
+    private void BTN_TROCA_GARANActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_TROCA_GARANActionPerformed
+        // TODO add your handling code here:
+        chamar_Tecnico("5");
+    }//GEN-LAST:event_BTN_TROCA_GARANActionPerformed
+
+    private void BTN_PLUSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_PLUSActionPerformed
+        // TODO add your handling code here:
+        chamar_Tecnico("6");
+    }//GEN-LAST:event_BTN_PLUSActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -2403,6 +2513,13 @@ public class Tela extends javax.swing.JFrame {
     private javax.swing.JToggleButton BTN3;
     private javax.swing.JToggleButton BTN4;
     private javax.swing.JToggleButton BTN5;
+    private javax.swing.JButton BTN_CHECKLIST;
+    private javax.swing.JButton BTN_GERAR_CRED;
+    private javax.swing.JButton BTN_PLUS;
+    private javax.swing.JButton BTN_RECARGA;
+    private javax.swing.JButton BTN_SITU_DIFE;
+    private javax.swing.JButton BTN_TIRA_DUVI;
+    private javax.swing.JButton BTN_TROCA_GARAN;
     private javax.swing.JDesktopPane JanelaInternaPrincipal;
     private javax.swing.JLabel PAPEL_DE_PAREDE;
     private javax.swing.JLabel TEXTO_CRONOMETRO;
