@@ -133,7 +133,7 @@ public class Tela extends javax.swing.JFrame {
     public int AT3;//Atendimentos Técnico 3
     public int AT4;//Atendimentos Técnico 4
     public int AT5;//Atendimentos Técnico 5
-    public static int contador, contador_piada, contador_chamar_novamente;
+    public static int contador, contador_piada, contador_chamar_novamente,t0,t1,t2,t3,t4,t5,t6;
     public int QDT;
     
     public int HCT1;
@@ -730,6 +730,14 @@ public class Tela extends javax.swing.JFrame {
         BTN_CHECKLIST.setText("CHECKLIST");
         BTN_CHECKLIST.setBorder(null);
         BTN_CHECKLIST.setContentAreaFilled(false);
+        BTN_CHECKLIST.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                BTN_CHECKLISTMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                BTN_CHECKLISTMouseExited(evt);
+            }
+        });
         BTN_CHECKLIST.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BTN_CHECKLISTActionPerformed(evt);
@@ -741,6 +749,14 @@ public class Tela extends javax.swing.JFrame {
         BTN_RECARGA.setText("RECARGA DE CARTUCHO");
         BTN_RECARGA.setBorder(null);
         BTN_RECARGA.setContentAreaFilled(false);
+        BTN_RECARGA.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                BTN_RECARGAMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                BTN_RECARGAMouseExited(evt);
+            }
+        });
         BTN_RECARGA.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BTN_RECARGAActionPerformed(evt);
@@ -752,6 +768,14 @@ public class Tela extends javax.swing.JFrame {
         BTN_SITU_DIFE.setText("SITUAÇÃO DIFERENCIADA");
         BTN_SITU_DIFE.setBorder(null);
         BTN_SITU_DIFE.setContentAreaFilled(false);
+        BTN_SITU_DIFE.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                BTN_SITU_DIFEMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                BTN_SITU_DIFEMouseExited(evt);
+            }
+        });
         BTN_SITU_DIFE.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BTN_SITU_DIFEActionPerformed(evt);
@@ -763,6 +787,14 @@ public class Tela extends javax.swing.JFrame {
         BTN_TIRA_DUVI.setText("TIRAR DÚVIDA DE CLIENTE");
         BTN_TIRA_DUVI.setBorder(null);
         BTN_TIRA_DUVI.setContentAreaFilled(false);
+        BTN_TIRA_DUVI.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                BTN_TIRA_DUVIMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                BTN_TIRA_DUVIMouseExited(evt);
+            }
+        });
         BTN_TIRA_DUVI.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BTN_TIRA_DUVIActionPerformed(evt);
@@ -774,6 +806,14 @@ public class Tela extends javax.swing.JFrame {
         BTN_GERAR_CRED.setText("GERAR CRÉDITO");
         BTN_GERAR_CRED.setBorder(null);
         BTN_GERAR_CRED.setContentAreaFilled(false);
+        BTN_GERAR_CRED.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                BTN_GERAR_CREDMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                BTN_GERAR_CREDMouseExited(evt);
+            }
+        });
         BTN_GERAR_CRED.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BTN_GERAR_CREDActionPerformed(evt);
@@ -785,6 +825,14 @@ public class Tela extends javax.swing.JFrame {
         BTN_TROCA_GARAN.setText("TROCA EM GARANTIA");
         BTN_TROCA_GARAN.setBorder(null);
         BTN_TROCA_GARAN.setContentAreaFilled(false);
+        BTN_TROCA_GARAN.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                BTN_TROCA_GARANMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                BTN_TROCA_GARANMouseExited(evt);
+            }
+        });
         BTN_TROCA_GARAN.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BTN_TROCA_GARANActionPerformed(evt);
@@ -796,6 +844,14 @@ public class Tela extends javax.swing.JFrame {
         BTN_PLUS.setText("PLUS");
         BTN_PLUS.setBorder(null);
         BTN_PLUS.setContentAreaFilled(false);
+        BTN_PLUS.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                BTN_PLUSMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                BTN_PLUSMouseExited(evt);
+            }
+        });
         BTN_PLUS.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BTN_PLUSActionPerformed(evt);
@@ -2432,37 +2488,121 @@ public class Tela extends javax.swing.JFrame {
     private void BTN_CHECKLISTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_CHECKLISTActionPerformed
         // TODO add your handling code here:
         chamar_Tecnico("0");
+        t0++;
+        BTN_CHECKLIST.setText("CHECKLIST - "+t0);
     }//GEN-LAST:event_BTN_CHECKLISTActionPerformed
 
     private void BTN_RECARGAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_RECARGAActionPerformed
         // TODO add your handling code here:
         chamar_Tecnico("1");
+        t1++;
+        BTN_RECARGA.setText("RECARGA DE CARTUCHO - "+t1);
     }//GEN-LAST:event_BTN_RECARGAActionPerformed
 
     private void BTN_SITU_DIFEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_SITU_DIFEActionPerformed
         // TODO add your handling code here:
         chamar_Tecnico("2");
+        t2++;
+        BTN_SITU_DIFE.setText("SITUAÇÃO DIFERENCIADA - "+t2);
     }//GEN-LAST:event_BTN_SITU_DIFEActionPerformed
 
     private void BTN_TIRA_DUVIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_TIRA_DUVIActionPerformed
         // TODO add your handling code here:
         chamar_Tecnico("3");
+        t3++;
+        BTN_TIRA_DUVI.setText("TIRAR DÚVIDA DE CLIENTE - "+t3);
     }//GEN-LAST:event_BTN_TIRA_DUVIActionPerformed
 
     private void BTN_GERAR_CREDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_GERAR_CREDActionPerformed
         // TODO add your handling code here:
         chamar_Tecnico("4");
+        t4++;
+        BTN_GERAR_CRED.setText("GERAR CRÉDITO - "+t4);
     }//GEN-LAST:event_BTN_GERAR_CREDActionPerformed
 
     private void BTN_TROCA_GARANActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_TROCA_GARANActionPerformed
         // TODO add your handling code here:
         chamar_Tecnico("5");
+        t5++;
+        BTN_TROCA_GARAN.setText("TROCA EM GARANTIA - "+t5);
     }//GEN-LAST:event_BTN_TROCA_GARANActionPerformed
 
     private void BTN_PLUSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_PLUSActionPerformed
         // TODO add your handling code here:
         chamar_Tecnico("6");
+        t6++;
+        BTN_PLUS.setText("PLUS - "+t6);
     }//GEN-LAST:event_BTN_PLUSActionPerformed
+
+    private void BTN_CHECKLISTMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BTN_CHECKLISTMouseEntered
+        // TODO add your handling code here:
+        BTN_CHECKLIST.setForeground(Color.red);
+    }//GEN-LAST:event_BTN_CHECKLISTMouseEntered
+
+    private void BTN_CHECKLISTMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BTN_CHECKLISTMouseExited
+        // TODO add your handling code here:
+        BTN_CHECKLIST.setForeground(Color.black);
+    }//GEN-LAST:event_BTN_CHECKLISTMouseExited
+
+    private void BTN_RECARGAMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BTN_RECARGAMouseEntered
+        // TODO add your handling code here:
+        BTN_RECARGA.setForeground(Color.red);
+    }//GEN-LAST:event_BTN_RECARGAMouseEntered
+
+    private void BTN_RECARGAMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BTN_RECARGAMouseExited
+        // TODO add your handling code here:
+        BTN_RECARGA.setForeground(Color.black);
+    }//GEN-LAST:event_BTN_RECARGAMouseExited
+
+    private void BTN_SITU_DIFEMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BTN_SITU_DIFEMouseEntered
+        // TODO add your handling code here:
+        BTN_SITU_DIFE.setForeground(Color.red);
+    }//GEN-LAST:event_BTN_SITU_DIFEMouseEntered
+
+    private void BTN_SITU_DIFEMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BTN_SITU_DIFEMouseExited
+        // TODO add your handling code here:
+        BTN_SITU_DIFE.setForeground(Color.black);
+    }//GEN-LAST:event_BTN_SITU_DIFEMouseExited
+
+    private void BTN_TIRA_DUVIMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BTN_TIRA_DUVIMouseEntered
+        // TODO add your handling code here:
+        BTN_TIRA_DUVI.setForeground(Color.red);
+    }//GEN-LAST:event_BTN_TIRA_DUVIMouseEntered
+
+    private void BTN_TIRA_DUVIMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BTN_TIRA_DUVIMouseExited
+        // TODO add your handling code here:
+        BTN_TIRA_DUVI.setForeground(Color.black);
+    }//GEN-LAST:event_BTN_TIRA_DUVIMouseExited
+
+    private void BTN_GERAR_CREDMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BTN_GERAR_CREDMouseEntered
+        // TODO add your handling code here:
+        BTN_GERAR_CRED.setForeground(Color.red);
+    }//GEN-LAST:event_BTN_GERAR_CREDMouseEntered
+
+    private void BTN_GERAR_CREDMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BTN_GERAR_CREDMouseExited
+        // TODO add your handling code here:
+        BTN_GERAR_CRED.setForeground(Color.black);
+    }//GEN-LAST:event_BTN_GERAR_CREDMouseExited
+
+    private void BTN_TROCA_GARANMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BTN_TROCA_GARANMouseEntered
+        // TODO add your handling code here:
+        BTN_TROCA_GARAN.setForeground(Color.red);
+    }//GEN-LAST:event_BTN_TROCA_GARANMouseEntered
+
+    private void BTN_TROCA_GARANMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BTN_TROCA_GARANMouseExited
+        // TODO add your handling code here:
+        BTN_TROCA_GARAN.setForeground(Color.black);
+    }//GEN-LAST:event_BTN_TROCA_GARANMouseExited
+
+    private void BTN_PLUSMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BTN_PLUSMouseEntered
+        // TODO add your handling code here:
+        BTN_PLUS.setForeground(Color.red);
+    }//GEN-LAST:event_BTN_PLUSMouseEntered
+
+    private void BTN_PLUSMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BTN_PLUSMouseExited
+        // TODO add your handling code here:
+        BTN_PLUS.setForeground(Color.black);
+    }//GEN-LAST:event_BTN_PLUSMouseExited
 
     /**
      * @param args the command line arguments
