@@ -77,9 +77,14 @@ public class Tela extends javax.swing.JFrame {
             
             contador_chamar_novamente = 0;
             
+            setCursor(new java.awt.Cursor(java.awt.Cursor.WAIT_CURSOR));
+            
             try {
                 Robot bot = new Robot();
                 bot.delay(3000);
+                
+                setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+                
             } catch (AWTException ex) {
                 Logger.getLogger(Tela.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -570,6 +575,7 @@ public class Tela extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Gerenciador de Atendimento");
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setResizable(false);
         addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
