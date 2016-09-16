@@ -1469,8 +1469,10 @@ public class Tela extends javax.swing.JFrame {
             if(habilitar_piadas == true){
                
                contador_piada++;
-            
-            if(contador_piada == 1800){// 1 HORA: 3600 MEIA/HORA: 1800
+            // 1 HORA: 3600 
+            //30/MINU: 1800
+            //15/MINU: 900
+            if(contador_piada == 900){
                contador_piada = 0;
                Random numero_aleatorio = new Random();
                int na = numero_aleatorio.nextInt(14);//1 A MAIS QUE O ULTIMO NUMERO DAS PIADAS
