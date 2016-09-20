@@ -81,7 +81,9 @@ public class Tela extends javax.swing.JFrame {
             
             try {
                 Robot bot = new Robot();
-                bot.delay(3000);
+                if(falar_situacao==true){
+                    bot.delay(3000);
+                }
                 
                 setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
                 
@@ -193,10 +195,10 @@ public class Tela extends javax.swing.JFrame {
     public String Senha = "CP1318RMKLZ";
     public String senha_digitada = "";
     public boolean solicitar_senha = false;
-    public boolean habilitar_som = true;
-    public boolean habilitar_piadas = true;
-    public boolean habilitar_alarme = true;
-    public boolean falar_situacao = true;
+    public boolean habilitar_som = false;
+    public boolean habilitar_piadas = false;
+    public boolean habilitar_alarme = false;
+    public boolean falar_situacao = false;
     
     public MenuSobre about;
    
