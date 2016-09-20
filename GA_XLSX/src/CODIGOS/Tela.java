@@ -909,6 +909,13 @@ public class Tela extends javax.swing.JFrame {
     
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         
+        /*DEFINE SE OS BOTÕES IRÃO INICIAR VISIVEIS OU NÃO*/
+        BOTAO_PIADAS.setVisible(false);
+        BOTAO_CHAMAR_NOVAMENTE.setVisible(false);
+        BOTAO_SOLICITAR_SENHA.setVisible(false);
+        BOTAO_SOM.setVisible(false);
+        /**************************************************/
+        
         lerPlanilha(arquivo);
         
         /*QDT*/
