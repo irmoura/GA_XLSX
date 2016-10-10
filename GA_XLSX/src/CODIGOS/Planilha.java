@@ -33,7 +33,7 @@ public class Planilha {
         
         try {
             
-            File dir = new File("C:\\GA");
+            File dir = new File("C:\\GA_XLSX");
             File file = new File(dir,arquivo+".xlsx");
             fisPlanilha = new FileInputStream(file);
             

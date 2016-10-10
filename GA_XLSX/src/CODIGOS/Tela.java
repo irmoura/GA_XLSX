@@ -13,6 +13,9 @@ import java.awt.AWTException;
 import java.awt.Color;
 import java.awt.Robot;
 import java.awt.event.ActionEvent;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.net.URL;
 import java.util.Calendar;
 import java.util.Random;
@@ -21,6 +24,8 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.Timer;
+import sun.audio.AudioPlayer;
+import sun.audio.AudioStream;
 
 /**
  *
@@ -30,9 +35,19 @@ public class Tela extends javax.swing.JFrame {
     
     public void play(String nomeDoAudio){
         
-        URL url = getClass().getResource(nomeDoAudio+".wav");//wav
-        AudioClip audio = Applet.newAudioClip(url);
-        audio.play();
+//        URL url = getClass().getResource("/CODIGOS/Sons/"+nomeDoAudio+".wav");//wav
+//        AudioClip audio = Applet.newAudioClip(url);
+//        audio.play();
+
+         try {
+            String wav_file = "C:/GA_XLSX/"+nomeDoAudio+".wav";
+            InputStream in = new FileInputStream(wav_file);
+            AudioStream audio = new AudioStream(in);
+            AudioPlayer.player.start(audio);
+        } catch (IOException ex) {
+            Logger.getLogger(Tela.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null,"O EM "+nomeDoAudio+" da planilha não corresponde ao arquivo de áudio existente");
+        }
 }
     
     public void chamar_Tecnico(String OPCAO){
@@ -100,25 +115,25 @@ public class Tela extends javax.swing.JFrame {
                 
             
             if(opcao.equals("0")){
-                play("/CODIGOS/Sons/checklist");
+                play("checklist");
             }else
             if(opcao.equals("1")){
-                play("/CODIGOS/Sons/recarga_de_cartucho");
+                play("recarga_de_cartucho");
             }else
             if(opcao.equals("2")){
-                play("/CODIGOS/Sons/situacao_diferenciada");
+                play("situacao_diferenciada");
             }else
             if(opcao.equals("3")){
-                play("/CODIGOS/Sons/tirar_duvida_de_cliente");
+                play("tirar_duvida_de_cliente");
             }else
             if(opcao.equals("4")){
-                play("/CODIGOS/Sons/atendimento_para_gerar_credito");//GERAR CREDITO
+                play("atendimento_para_gerar_credito");//GERAR CREDITO
             }else
             if(opcao.equals("5")){
-                play("/CODIGOS/Sons/troca_em_garantia");
+                play("troca_em_garantia");
             }else
             if(opcao.equals("6")){
-                play("/CODIGOS/Sons/atendimento_para_plus");
+                play("atendimento_para_plus");
             }
             }
                 
@@ -195,10 +210,10 @@ public class Tela extends javax.swing.JFrame {
     public String Senha = "CP1318RMKLZ";
     public String senha_digitada = "";
     public boolean solicitar_senha = false;
-    public boolean habilitar_som = false;
-    public boolean habilitar_piadas = false;
-    public boolean habilitar_alarme = false;
-    public boolean falar_situacao = false;
+    public boolean habilitar_som = true;
+    public boolean habilitar_piadas = true;
+    public boolean habilitar_alarme = true;
+    public boolean falar_situacao = true;
     
     public MenuSobre about;
    
@@ -403,7 +418,7 @@ public class Tela extends javax.swing.JFrame {
                 if(v == 1 && !BTN1.isSelected()){
                     
                     if(habilitar_som == true){
-                        play("/CODIGOS/Sons/002228");
+                        play(PSL2[1]);
                     }
                     TEXTO_NOME_DA_VEZ.setText(PSL2[0]+" - "+PSL2[1]);
                     AT1++;
@@ -413,7 +428,7 @@ public class Tela extends javax.swing.JFrame {
                 }       if(v == 2 && !BTN2.isSelected()){
                     
                     if(habilitar_som == true){
-                        play("/CODIGOS/Sons/002583");
+                        play(PSL3[1]);
                     }
                     TEXTO_NOME_DA_VEZ.setText(PSL3[0]+" - "+PSL3[1]);
                     AT2++;
@@ -423,7 +438,7 @@ public class Tela extends javax.swing.JFrame {
                 }       if(v == 3 && !BTN3.isSelected()){ 
                     
                     if(habilitar_som == true){
-                        play("/CODIGOS/Sons/002423");
+                        play(PSL4[1]);
                     }
                     TEXTO_NOME_DA_VEZ.setText(PSL4[0]+" - "+PSL4[1]);
                     AT3++;
@@ -433,7 +448,7 @@ public class Tela extends javax.swing.JFrame {
                 }       if(v == 4 && !BTN4.isSelected()){ 
                     
                     if(habilitar_som == true){
-                        play("/CODIGOS/Sons/003263");
+                        play(PSL5[1]);
                     }
                     TEXTO_NOME_DA_VEZ.setText(PSL5[0]+" - "+PSL5[1]);
                     AT4++;
@@ -478,7 +493,7 @@ public class Tela extends javax.swing.JFrame {
                 if(v == 1 && !BTN2.isSelected()){
                     
                     if(habilitar_som == true){
-                        play("/CODIGOS/Sons/002228");
+                        play(PSL2[1]);
                     }
                     TEXTO_NOME_DA_VEZ.setText(PSL2[0]+" - "+PSL2[1]);
                     AT1++;
@@ -490,7 +505,7 @@ public class Tela extends javax.swing.JFrame {
                 if(v == 2 && !BTN3.isSelected()){
                     
                     if(habilitar_som == true){
-                        play("/CODIGOS/Sons/002583");
+                        play(PSL3[1]);
                     }
                     TEXTO_NOME_DA_VEZ.setText(PSL3[0]+" - "+PSL3[1]);
                     AT2++;
@@ -502,7 +517,7 @@ public class Tela extends javax.swing.JFrame {
                 if(v == 3 && !BTN4.isSelected()){
                     
                     if(habilitar_som == true){
-                        play("/CODIGOS/Sons/002423");
+                        play(PSL4[1]);
                     }
                     TEXTO_NOME_DA_VEZ.setText(PSL4[0]+" - "+PSL4[1]);
                     AT3++;
@@ -519,7 +534,7 @@ public class Tela extends javax.swing.JFrame {
                 if(BTN4.isSelected() && BTN2.isSelected() && !BTN3.isSelected()){
                     
                     if(habilitar_som == true){
-                        play("/CODIGOS/Sons/002583");
+                        play(PSL3[1]);
                     }
                     TEXTO_NOME_DA_VEZ.setText(PSL3[0]+" - "+PSL3[1]);
                     AT2++;
@@ -1481,11 +1496,16 @@ public class Tela extends javax.swing.JFrame {
             // 1 HORA: 3600 
             //30/MINU: 1800
             //15/MINU: 900
-            if(contador_piada == 900){
+            //10/MINU: 600
+            //5/MINU: 300
+            //1/MINU: 60
+            //30/SEGU: 30
+            if(contador_piada == 600){
                contador_piada = 0;
                Random numero_aleatorio = new Random();
                int na = numero_aleatorio.nextInt(14);//1 A MAIS QUE O ULTIMO NUMERO DAS PIADAS
-               play("/CODIGOS/Piadas/"+na);
+//               play("/CODIGOS/Piadas/"+na);
+                play(""+na);
                System.out.println(na);
             }
             
@@ -1685,7 +1705,7 @@ public class Tela extends javax.swing.JFrame {
             ////////////////////////////////////////////////////////////////////
             /*ALARMES*/
             if(horas.equals("15:30:00")){
-                play("/CODIGOS/Sons/hora_da_pizza");
+                play("hora_da_pizza");
             }
             
             ////////////////////////////////////////////////////////////////////
@@ -1999,13 +2019,13 @@ public class Tela extends javax.swing.JFrame {
                     
                     if(habilitar_som == true){
                         if(i == 0){
-                            play("/CODIGOS/Sons/primeira_tentativa");
+                            play("primeira_tentativa");
                         }else
                         if(i == 1){
-                            play("/CODIGOS/Sons/segunda_tentativa");
+                            play("segunda_tentativa");
                         }else
                         if(i == 2){
-                            play("/CODIGOS/Sons/terceira_tentativa");
+                            play("terceira_tentativa");
                         }
                     }
                     
@@ -2020,7 +2040,7 @@ public class Tela extends javax.swing.JFrame {
             if (!senha.equals(Senha) || senha.equals(null))    
             {
                 if(habilitar_som == true){
-                    play("/CODIGOS/Sons/senha_incorreta_ou_operacao_cancelada");//executa o arquivo wav
+                    play("senha_incorreta_ou_operacao_cancelada");//executa o arquivo wav
                 }
                 JOptionPane.showMessageDialog(null,"Senha incorreta ou operação cancelada","Aviso",JOptionPane.WARNING_MESSAGE);
             }
@@ -2264,13 +2284,13 @@ public class Tela extends javax.swing.JFrame {
                     
                     if(habilitar_som == true){
                         if(i == 0){
-                            play("/CODIGOS/Sons/primeira_tentativa");
+                            play("primeira_tentativa");
                         }else
                         if(i == 1){
-                            play("/CODIGOS/Sons/segunda_tentativa");
+                            play("segunda_tentativa");
                         }else
                         if(i == 2){
-                            play("/CODIGOS/Sons/terceira_tentativa");
+                            play("terceira_tentativa");
                         }
                     }
                     
@@ -2285,7 +2305,7 @@ public class Tela extends javax.swing.JFrame {
             if (!senha.equals(Senha) || senha.equals(null))    
             {
                 if(habilitar_som == true){
-                    play("/CODIGOS/Sons/senha_incorreta_ou_operacao_cancelada");//executa o arquivo wav
+                    play("senha_incorreta_ou_operacao_cancelada");//executa o arquivo wav
                 }
                 JOptionPane.showMessageDialog(null,"Senha incorreta ou operação cancelada","Aviso",JOptionPane.WARNING_MESSAGE);
             }
@@ -2327,13 +2347,13 @@ public class Tela extends javax.swing.JFrame {
                     
                     if(habilitar_som == true){
                         if(i == 0){
-                            play("/CODIGOS/Sons/primeira_tentativa");
+                            play("primeira_tentativa");
                         }else
                         if(i == 1){
-                            play("/CODIGOS/Sons/segunda_tentativa");
+                            play("segunda_tentativa");
                         }else
                         if(i == 2){
-                            play("/CODIGOS/Sons/terceira_tentativa");
+                            play("terceira_tentativa");
                         }
                     }
                     
@@ -2348,7 +2368,7 @@ public class Tela extends javax.swing.JFrame {
             if (!senha.equals(Senha) || senha.equals(null))    
             {
                 if(habilitar_som == true){
-                    play("/CODIGOS/Sons/senha_incorreta_ou_operacao_cancelada");//executa o arquivo wav
+                    play("senha_incorreta_ou_operacao_cancelada");//executa o arquivo wav
                 }
                 JOptionPane.showMessageDialog(null,"Senha incorreta ou operação cancelada","Aviso",JOptionPane.WARNING_MESSAGE);
             }
@@ -2357,12 +2377,12 @@ public class Tela extends javax.swing.JFrame {
                   
              if(habilitar_som == false){
                 habilitar_som = true;
-                play("/CODIGOS/Sons/som_habilitado");//executa o arquivo wav
+                play("som_habilitado");//executa o arquivo wav
                 BOTAO_SOM.setIcon(new javax.swing.ImageIcon(getClass().getResource("/CODIGOS/Imagens/som_habilitado.png"))); // NOI18N
              }else
              if(habilitar_som == true){
                 habilitar_som = false;
-                play("/CODIGOS/Sons/som_desabilitado");//executa o arquivo wav
+                play("som_desabilitado");//executa o arquivo wav
                 BOTAO_SOM.setIcon(new javax.swing.ImageIcon(getClass().getResource("/CODIGOS/Imagens/som_desabilitado.png"))); // NOI18N
              }
                 
@@ -2392,13 +2412,13 @@ public class Tela extends javax.swing.JFrame {
                     
                     if(habilitar_som == true){
                         if(i == 0){
-                            play("/CODIGOS/Sons/primeira_tentativa");
+                            play("primeira_tentativa");
                         }else
                         if(i == 1){
-                            play("/CODIGOS/Sons/segunda_tentativa");
+                            play("segunda_tentativa");
                         }else
                         if(i == 2){
-                            play("/CODIGOS/Sons/terceira_tentativa");
+                            play("terceira_tentativa");
                         }
                     }
                     
@@ -2413,7 +2433,7 @@ public class Tela extends javax.swing.JFrame {
             if (!senha.equals(Senha) || senha.equals(null))    
             {
                 if(habilitar_som == true){
-                    play("/CODIGOS/Sons/senha_incorreta_ou_operacao_cancelada");//executa o arquivo wav
+                    play("senha_incorreta_ou_operacao_cancelada");//executa o arquivo wav
                 }
                 JOptionPane.showMessageDialog(null,"Senha incorreta ou operação cancelada","Aviso",JOptionPane.WARNING_MESSAGE);
             }
@@ -2423,12 +2443,12 @@ public class Tela extends javax.swing.JFrame {
              if(habilitar_piadas == false){
                 habilitar_piadas = true;
                 contador_piada = 0;
-                play("/CODIGOS/Sons/piadas_habilitadas");//executa o arquivo wav
+                play("piadas_habilitadas");//executa o arquivo wav
                 BOTAO_PIADAS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/CODIGOS/Imagens/joker_icon.png"))); // NOI18N
              }else
              if(habilitar_piadas == true){
                 habilitar_piadas = false;
-                play("/CODIGOS/Sons/piadas_desabilitadas");//executa o arquivo wav
+                play("piadas_desabilitadas");//executa o arquivo wav
                 BOTAO_PIADAS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/CODIGOS/Imagens/joker-48.png"))); // NOI18N
              }
                 
@@ -2449,16 +2469,16 @@ public class Tela extends javax.swing.JFrame {
             if(habilitar_som == true){
             if(QDT == 4){
                 if(v == 1){
-                play("/CODIGOS/Sons/002228");
+                play(PSL2[1]);
                 }else
                 if(v == 2){
-                play("/CODIGOS/Sons/002583");
+                play(PSL3[1]);
                 }else
                 if(v == 3){
-                play("/CODIGOS/Sons/002423");
+                play(PSL4[1]);
                 }else
                 if(v == 0){
-                play("/CODIGOS/Sons/003263");
+                play(PSL5[1]);
                 }
             }
             try {
@@ -2469,25 +2489,25 @@ public class Tela extends javax.swing.JFrame {
             }
             
             if(opcao.equals("0")){
-                play("/CODIGOS/Sons/checklist");
+                play("checklist");
             }else
             if(opcao.equals("1")){
-                play("/CODIGOS/Sons/recarga_de_cartucho");
+                play("recarga_de_cartucho");
             }else
             if(opcao.equals("2")){
-                play("/CODIGOS/Sons/situacao_diferenciada");
+                play("situacao_diferenciada");
             }else
             if(opcao.equals("3")){
-                play("/CODIGOS/Sons/tirar_duvida_de_cliente");
+                play("tirar_duvida_de_cliente");
             }else
             if(opcao.equals("4")){
-                play("/CODIGOS/Sons/atendimento_para_gerar_credito");//GERAR CREDITO
+                play("atendimento_para_gerar_credito");//GERAR CREDITO
             }else
             if(opcao.equals("5")){
-                play("/CODIGOS/Sons/troca_em_garantia");
+                play("troca_em_garantia");
             }else
             if(opcao.equals("6")){
-                play("/CODIGOS/Sons/atendimento_para_plus");
+                play("atendimento_para_plus");
             }
             
         }else{
