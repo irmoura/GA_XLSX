@@ -40,7 +40,11 @@ public class Tela extends javax.swing.JFrame {
 //        audio.play();
 
          try {
-            String wav_file = "C:/GA_XLSX/"+nomeDoAudio+".wav";
+             
+             //"\\\\HP-G42\\Users\\Public\\GA_XLSX\\"
+             //"C:/GA_XLSX/"
+             
+            String wav_file = "\\\\HP-G42\\Users\\Public\\GA_XLSX\\"+nomeDoAudio+".wav";
             InputStream in = new FileInputStream(wav_file);
             AudioStream audio = new AudioStream(in);
             AudioPlayer.player.start(audio);
@@ -925,10 +929,10 @@ public class Tela extends javax.swing.JFrame {
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         
         /*DEFINE SE OS BOTÕES IRÃO INICIAR VISIVEIS OU NÃO*/
-        BOTAO_PIADAS.setVisible(false);
-        BOTAO_CHAMAR_NOVAMENTE.setVisible(false);
-        BOTAO_SOLICITAR_SENHA.setVisible(false);
-        BOTAO_SOM.setVisible(false);
+        BOTAO_PIADAS.setVisible(true);
+        BOTAO_CHAMAR_NOVAMENTE.setVisible(true);
+        BOTAO_SOLICITAR_SENHA.setVisible(true);
+        BOTAO_SOM.setVisible(true);
         /**************************************************/
         
         lerPlanilha(arquivo);
@@ -1492,19 +1496,21 @@ public class Tela extends javax.swing.JFrame {
             
             if(habilitar_piadas == true){
                
-               contador_piada++;
+            contador_piada++;
             // 1 HORA: 3600 
             //30/MINU: 1800
             //15/MINU: 900
             //10/MINU: 600
             //5/MINU: 300
+            //4/MINU: 240
+            //3/MINU: 180
+            //2/MINU: 120
             //1/MINU: 60
             //30/SEGU: 30
-            if(contador_piada == 600){
+            if(contador_piada == 30){
                contador_piada = 0;
                Random numero_aleatorio = new Random();
                int na = numero_aleatorio.nextInt(14);//1 A MAIS QUE O ULTIMO NUMERO DAS PIADAS
-//               play("/CODIGOS/Piadas/"+na);
                 play(""+na);
                System.out.println(na);
             }
