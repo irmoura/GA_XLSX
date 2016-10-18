@@ -36,7 +36,7 @@ public class Planilha {
             //"\\\\HP-G42\\Users\\Public\\GA_XLSX" - REDE
             //"C:\\GA_XLSX" - LOCAL
             
-            File dir = new File("\\\\HP-G42\\Users\\Public\\GA_XLSX");
+            File dir = new File("C:\\GA_XLSX");
             File file = new File(dir,arquivo+".xlsx");
             fisPlanilha = new FileInputStream(file);
             

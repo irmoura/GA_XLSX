@@ -44,7 +44,7 @@ public class Tela extends javax.swing.JFrame {
              //"\\\\HP-G42\\Users\\Public\\GA_XLSX\\"
              //"C:/GA_XLSX/"
              
-            String wav_file = "\\\\HP-G42\\Users\\Public\\GA_XLSX\\"+nomeDoAudio+".wav";
+            String wav_file = "C:/GA_XLSX/"+nomeDoAudio+".wav";
             InputStream in = new FileInputStream(wav_file);
             AudioStream audio = new AudioStream(in);
             AudioPlayer.player.start(audio);
