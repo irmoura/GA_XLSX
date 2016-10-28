@@ -1507,7 +1507,7 @@ public class Tela extends javax.swing.JFrame {
             //2/MINU: 120
             //1/MINU: 60
             //30/SEGU: 30
-            if(contador_piada == 30){
+            if(contador_piada == 900){
                contador_piada = 0;
                Random numero_aleatorio = new Random();
                int na = numero_aleatorio.nextInt(14);//1 A MAIS QUE O ULTIMO NUMERO DAS PIADAS
