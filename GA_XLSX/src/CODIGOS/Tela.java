@@ -1510,7 +1510,7 @@ public class Tela extends javax.swing.JFrame {
             if(contador_piada == 900){
                contador_piada = 0;
                Random numero_aleatorio = new Random();
-               int na = numero_aleatorio.nextInt(14);//1 A MAIS QUE O ULTIMO NUMERO DAS PIADAS
+               int na = numero_aleatorio.nextInt(29);//1 A MAIS QUE O ULTIMO NUMERO DAS PIADAS
                 play(""+na);
                System.out.println(na);
             }
@@ -2473,7 +2473,18 @@ public class Tela extends javax.swing.JFrame {
              if(BOTAO_ZERAR.isEnabled()){
             
             if(habilitar_som == true){
-            if(QDT == 4){
+                if(QDT == 3){
+                if(v == 1){
+                play(PSL2[1]);
+                }else
+                if(v == 2){
+                play(PSL3[1]);
+                }else
+                if(v == 0){
+                play(PSL4[1]);
+                }
+            }
+                if(QDT == 4){
                 if(v == 1){
                 play(PSL2[1]);
                 }else
