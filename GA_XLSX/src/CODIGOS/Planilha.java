@@ -24,8 +24,9 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
  */
 public class Planilha {
     
-    public static String[] PS = new String[36];
-    public static int count;
+//    public static String[] PS = new String[36];
+    public static String[] PS;
+    public static int count, count2, num_linhas, num_colunas;
     
     public static void lerPlanilha(String arquivo){
         
@@ -60,6 +61,15 @@ public class Planilha {
                 
                 //varremos todas as celulas da linha atual
                 while(cellIterator.hasNext()){
+                    
+                    /*OBTEM AUTOMATICAMENTE O NUMERO TOTAL DE CELULAS*/
+                    count2++;
+                    if(count2 == 1){
+                        num_colunas = row.getPhysicalNumberOfCells(); // Número de colunas
+                        num_linhas = sheet.getPhysicalNumberOfRows(); // Número de linhas
+                        PS = new String[num_linhas*num_colunas];
+                    }
+                    /*OBTEM AUTOMATICAMENTE O NUMERO TOTAL DE CELULAS*/
                     
                     //criamos uma celula
                     Cell cell = cellIterator.next();
@@ -96,19 +106,5 @@ public class Planilha {
         }
         
     }
-
-    /**
-     * @param args the command line arguments
-     */
-    /*public static void main(String[] args) {
-        // TODO code application logic here
-        
-        lerPlanilha("CONFIG3");
-        
-        for(int i=0; i < PS.length; i++){
-                JOptionPane.showMessageDialog(null,""+PS[i]+"    "+i);
-        }
-
-    }*/
     
 }
