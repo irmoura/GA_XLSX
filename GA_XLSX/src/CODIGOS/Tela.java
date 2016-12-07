@@ -2151,7 +2151,8 @@ public class Tela extends javax.swing.JFrame {
         JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);   
   
         if (opcao != 0){
-        //JOptionPane.showMessageDialog(null,"");
+        BTN1.setSelected(false);
+        BTN1.setForeground(Color.black);
         }else{
               
 //            String senha = "";
@@ -2214,7 +2215,8 @@ public class Tela extends javax.swing.JFrame {
         JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);   
   
         if (opcao != 0){
-        //JOptionPane.showMessageDialog(null,"");
+        BTN2.setSelected(false);
+        BTN2.setForeground(Color.black);
         }else{
               
 //            String senha = "";
@@ -2276,7 +2278,8 @@ public class Tela extends javax.swing.JFrame {
         JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]); 
   
         if (opcao != 0){
-        //JOptionPane.showMessageDialog(null,"");
+        BTN3.setSelected(false);
+        BTN3.setForeground(Color.black);
         }else{
               
 //            String senha = "";
@@ -2338,7 +2341,8 @@ public class Tela extends javax.swing.JFrame {
         JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);  
   
         if (opcao != 0){
-        //JOptionPane.showMessageDialog(null,"");
+        BTN4.setSelected(false);
+        BTN4.setForeground(Color.black);
         }else{
               
 //            String senha = "";
@@ -2400,7 +2404,8 @@ public class Tela extends javax.swing.JFrame {
         JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]); 
   
         if (opcao != 0){
-        //JOptionPane.showMessageDialog(null,"");
+        BTN5.setSelected(false);
+        BTN5.setForeground(Color.black);
         }else{
               
 //            String senha = "";
