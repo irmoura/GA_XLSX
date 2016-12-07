@@ -16,7 +16,10 @@ import java.awt.event.ActionEvent;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.math.BigInteger;
 import java.net.URL;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.Calendar;
 import java.util.Random;
 import java.util.logging.Level;
@@ -32,6 +35,24 @@ import sun.audio.AudioStream;
  * @author Ismael Ribeiro
  */
 public class Tela extends javax.swing.JFrame {
+    
+    public String senha = "";
+    
+    public void hash(String senha){
+        ////////////////////////////////////////////////////////////
+                 String senha_hash = senha;  
+		 MessageDigest md = null;  
+                    try {
+                        md = MessageDigest.getInstance( "MD5" );
+                    } catch (NoSuchAlgorithmException ex) {
+                        Logger.getLogger(Tela.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+		 md.update( senha_hash.getBytes() );  
+		 BigInteger hash = new BigInteger( 1, md.digest() );  
+		 String retornaSenha = hash.toString( 16 );
+                this.senha = retornaSenha;
+                ////////////////////////////////////////////////////////////
+    }
     
     public void play(String nomeDoAudio){
         
@@ -701,7 +722,7 @@ public class Tela extends javax.swing.JFrame {
         JanelaInternaPrincipal.add(TEXTO_HORA, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 20, -1, -1));
 
         TEXTO_DESENVOLVEDOR.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        TEXTO_DESENVOLVEDOR.setText("Desenvolvedor : Ismael Ribeiro                                                                                                                               Versão: 071220160907");
+        TEXTO_DESENVOLVEDOR.setText("Desenvolvedor : Ismael Ribeiro                                                                                                                               Versão: 020920161624");
         JanelaInternaPrincipal.add(TEXTO_DESENVOLVEDOR, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 420, -1, -1));
 
         TEXTO_CRONOMETRO.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -2015,7 +2036,6 @@ public class Tela extends javax.swing.JFrame {
         //JOptionPane.showMessageDialog(null,"");
         }else{
               
-            String senha = "";
             int tentativas = 3;//Define o número de tentativas que o usuário terá para acertar a senha.
             
             for(int i=0;i<tentativas;i++)
@@ -2040,6 +2060,8 @@ public class Tela extends javax.swing.JFrame {
                     JOptionPane.showConfirmDialog(null,new Object[]{ jpf},"Warning "+(i+1)+"ª tentativa.",JOptionPane.OK_CANCEL_OPTION,JOptionPane.QUESTION_MESSAGE);
         
                     senha = new String(jpf.getPassword());
+                    
+                    hash(senha);
                     
                 }    
             }
@@ -2132,7 +2154,7 @@ public class Tela extends javax.swing.JFrame {
         //JOptionPane.showMessageDialog(null,"");
         }else{
               
-            String senha = "";
+//            String senha = "";
             int tentativas = 3;//Define o número de tentativas que o usuário terá para acertar a senha.
             
             for(int i=0;i<tentativas;i++)
@@ -2157,6 +2179,8 @@ public class Tela extends javax.swing.JFrame {
                     JOptionPane.showConfirmDialog(null,new Object[]{ jpf},"Warning "+(i+1)+"ª tentativa.",JOptionPane.OK_CANCEL_OPTION,JOptionPane.QUESTION_MESSAGE);
         
                     senha = new String(jpf.getPassword());
+                    
+                    hash(senha);
                     
                 }    
             }
@@ -2193,7 +2217,7 @@ public class Tela extends javax.swing.JFrame {
         //JOptionPane.showMessageDialog(null,"");
         }else{
               
-            String senha = "";
+//            String senha = "";
             int tentativas = 3;//Define o número de tentativas que o usuário terá para acertar a senha.
             
             for(int i=0;i<tentativas;i++)
@@ -2218,6 +2242,8 @@ public class Tela extends javax.swing.JFrame {
                     JOptionPane.showConfirmDialog(null,new Object[]{ jpf},"Warning "+(i+1)+"ª tentativa.",JOptionPane.OK_CANCEL_OPTION,JOptionPane.QUESTION_MESSAGE);
         
                     senha = new String(jpf.getPassword());
+                    
+                    hash(senha);
                     
                 }    
             }
@@ -2253,7 +2279,7 @@ public class Tela extends javax.swing.JFrame {
         //JOptionPane.showMessageDialog(null,"");
         }else{
               
-            String senha = "";
+//            String senha = "";
             int tentativas = 3;//Define o número de tentativas que o usuário terá para acertar a senha.
             
             for(int i=0;i<tentativas;i++)
@@ -2278,6 +2304,8 @@ public class Tela extends javax.swing.JFrame {
                     JOptionPane.showConfirmDialog(null,new Object[]{ jpf},"Warning "+(i+1)+"ª tentativa.",JOptionPane.OK_CANCEL_OPTION,JOptionPane.QUESTION_MESSAGE);
         
                     senha = new String(jpf.getPassword());
+                    
+                    hash(senha);
                     
                 }    
             }
@@ -2313,7 +2341,7 @@ public class Tela extends javax.swing.JFrame {
         //JOptionPane.showMessageDialog(null,"");
         }else{
               
-            String senha = "";
+//            String senha = "";
             int tentativas = 3;//Define o número de tentativas que o usuário terá para acertar a senha.
             
             for(int i=0;i<tentativas;i++)
@@ -2338,6 +2366,8 @@ public class Tela extends javax.swing.JFrame {
                     JOptionPane.showConfirmDialog(null,new Object[]{ jpf},"Warning "+(i+1)+"ª tentativa.",JOptionPane.OK_CANCEL_OPTION,JOptionPane.QUESTION_MESSAGE);
         
                     senha = new String(jpf.getPassword());
+                    
+                    hash(senha);
                     
                 }    
             }
@@ -2373,7 +2403,7 @@ public class Tela extends javax.swing.JFrame {
         //JOptionPane.showMessageDialog(null,"");
         }else{
               
-            String senha = "";
+//            String senha = "";
             int tentativas = 3;//Define o número de tentativas que o usuário terá para acertar a senha.
             
             for(int i=0;i<tentativas;i++)
@@ -2398,6 +2428,8 @@ public class Tela extends javax.swing.JFrame {
                     JOptionPane.showConfirmDialog(null,new Object[]{ jpf},"Warning "+(i+1)+"ª tentativa.",JOptionPane.OK_CANCEL_OPTION,JOptionPane.QUESTION_MESSAGE);
         
                     senha = new String(jpf.getPassword());
+                    
+                    hash(senha);
                     
                 }    
             }
