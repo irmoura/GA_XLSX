@@ -949,6 +949,62 @@ public class Tela extends javax.swing.JFrame {
     
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         
+        
+        setVisible(false);//A TELA INICIA INVISIVEL
+        
+        ////////////////////////////////////////////////////////////////////////
+        Object[] options = { "Sim", "Não" };   
+        int opcao = JOptionPane.showOptionDialog(null,"Deseja iniciar o programa ?","Aviso",
+        JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);   
+  
+        if (opcao != 0){
+        System.exit(0);
+        }else{
+              
+            int tentativas = 3;//Define o número de tentativas que o usuário terá para acertar a senha.
+            
+            for(int i=0;i<tentativas;i++)
+            {
+                if(!senha.equals(Senha))      
+                {
+                    
+                    if(habilitar_som == true){
+                        if(i == 0){
+                            play("primeira_tentativa");
+                        }else
+                        if(i == 1){
+                            play("segunda_tentativa");
+                        }else
+                        if(i == 2){
+                            play("terceira_tentativa");
+                        }
+                    }
+                    
+                    JPasswordField jpf = new JPasswordField();
+            
+                    JOptionPane.showConfirmDialog(null,new Object[]{ jpf},"Warning "+(i+1)+"ª tentativa.",JOptionPane.OK_CANCEL_OPTION,JOptionPane.QUESTION_MESSAGE);
+        
+                    senha = new String(jpf.getPassword());
+                    
+                    hash(senha);
+                    
+                }    
+            }
+            if (!senha.equals(Senha) || senha.equals(null))    
+            {
+                if(habilitar_som == true){
+                    play("senha_incorreta_ou_operacao_cancelada");//executa o arquivo wav
+                }
+                JOptionPane.showMessageDialog(null,"Senha incorreta ou operação cancelada","Aviso",JOptionPane.WARNING_MESSAGE);
+                System.exit(0);
+            }
+            else
+            {
+                this.senha = "";
+                setVisible(true);
+            }
+        }
+        
         /*DEFINE SE OS BOTÕES IRÃO INICIAR VISIVEIS OU NÃO*/
         BOTAO_PIADAS.setVisible(true);
         BOTAO_CHAMAR_NOVAMENTE.setVisible(true);
@@ -2074,6 +2130,7 @@ public class Tela extends javax.swing.JFrame {
             }
             else
             {
+                    this.senha = "";
                     t0 = 0;
                     t1 = 0;
                     t2 = 0;
@@ -2190,11 +2247,14 @@ public class Tela extends javax.swing.JFrame {
                 if(habilitar_som == true){
                     play("senha_incorreta_ou_operacao_cancelada");//executa o arquivo wav
                 }
+                BTN1.setSelected(false);
+                BTN1.setForeground(Color.black);
                 JOptionPane.showMessageDialog(null,"Senha incorreta ou operação cancelada","Aviso",JOptionPane.WARNING_MESSAGE);
             }
             else
             {
                  ////////////////////////////////////////////////////////////////////////
+                this.senha = "";
                 if(BTN1.isSelected()){
                 BTN1.setSelected(true);
                 BTN1.setForeground(Color.red);
@@ -2254,11 +2314,14 @@ public class Tela extends javax.swing.JFrame {
                 if(habilitar_som == true){
                     play("senha_incorreta_ou_operacao_cancelada");//executa o arquivo wav
                 }
+                BTN2.setSelected(false);
+                BTN2.setForeground(Color.black);
                 JOptionPane.showMessageDialog(null,"Senha incorreta ou operação cancelada","Aviso",JOptionPane.WARNING_MESSAGE);
             }
             else
             {
                  ////////////////////////////////////////////////////////////////////////
+                this.senha = "";
                 if(BTN2.isSelected()){
                 BTN2.setSelected(true);
                 BTN2.setForeground(Color.red);
@@ -2317,11 +2380,14 @@ public class Tela extends javax.swing.JFrame {
                 if(habilitar_som == true){
                     play("senha_incorreta_ou_operacao_cancelada");//executa o arquivo wav
                 }
+                BTN3.setSelected(false);
+                BTN3.setForeground(Color.black);
                 JOptionPane.showMessageDialog(null,"Senha incorreta ou operação cancelada","Aviso",JOptionPane.WARNING_MESSAGE);
             }
             else
             {
                  ////////////////////////////////////////////////////////////////////////
+                this.senha = "";
                 if(BTN3.isSelected()){
                 BTN3.setSelected(true);
                 BTN3.setForeground(Color.red);
@@ -2380,11 +2446,14 @@ public class Tela extends javax.swing.JFrame {
                 if(habilitar_som == true){
                     play("senha_incorreta_ou_operacao_cancelada");//executa o arquivo wav
                 }
+                BTN4.setSelected(false);
+                BTN4.setForeground(Color.black);
                 JOptionPane.showMessageDialog(null,"Senha incorreta ou operação cancelada","Aviso",JOptionPane.WARNING_MESSAGE);
             }
             else
             {
                  ////////////////////////////////////////////////////////////////////////
+                this.senha = "";
                 if(BTN4.isSelected()){
                 BTN4.setSelected(true);
                 BTN4.setForeground(Color.red);
@@ -2443,11 +2512,14 @@ public class Tela extends javax.swing.JFrame {
                 if(habilitar_som == true){
                     play("senha_incorreta_ou_operacao_cancelada");//executa o arquivo wav
                 }
+                BTN5.setSelected(false);
+                BTN5.setForeground(Color.black);
                 JOptionPane.showMessageDialog(null,"Senha incorreta ou operação cancelada","Aviso",JOptionPane.WARNING_MESSAGE);
             }
             else
             {
                  ////////////////////////////////////////////////////////////////////////
+                this.senha = "";
                 if(BTN5.isSelected()){
                 BTN5.setSelected(true);
                 BTN5.setForeground(Color.red);
