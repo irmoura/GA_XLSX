@@ -211,7 +211,7 @@ public class Tela extends javax.swing.JFrame {
     
     public String arquivo = "CONFIG4";
     public String senha_de_chamada = "19216811";
-    public String Senha = "CP1318RMKLZ";
+    public String Senha = "92b13d20f2d9f7ec88e28b2d1289e828";
     public String senha_digitada = "";
     public boolean solicitar_senha = false;
     public boolean habilitar_som = true;
@@ -594,7 +594,7 @@ public class Tela extends javax.swing.JFrame {
         jMenuSobre = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Gerenciador de Atendimento");
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setResizable(false);
@@ -701,7 +701,7 @@ public class Tela extends javax.swing.JFrame {
         JanelaInternaPrincipal.add(TEXTO_HORA, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 20, -1, -1));
 
         TEXTO_DESENVOLVEDOR.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        TEXTO_DESENVOLVEDOR.setText("Desenvolvedor : Ismael Ribeiro                                                                                                                               Versão: 020920161624");
+        TEXTO_DESENVOLVEDOR.setText("Desenvolvedor : Ismael Ribeiro                                                                                                                               Versão: 071220160907");
         JanelaInternaPrincipal.add(TEXTO_DESENVOLVEDOR, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 420, -1, -1));
 
         TEXTO_CRONOMETRO.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -2052,6 +2052,20 @@ public class Tela extends javax.swing.JFrame {
             }
             else
             {
+                    t0 = 0;
+                    t1 = 0;
+                    t2 = 0;
+                    t3 = 0;
+                    t4 = 0;
+                    t5 = 0;
+                    t6 = 0;
+                    BTN_CHECKLIST.setText("CHECKLIST");
+                    BTN_GERAR_CRED.setText("GERAR CRÉDITO");
+                    BTN_PLUS.setText("PLUS");
+                    BTN_RECARGA.setText("RECARGA DE CARTUCHO");
+                    BTN_SITU_DIFE.setText("SITUAÇÃO DIFERENCIADA");
+                    BTN_TIRA_DUVI.setText("TIRAR DÚVIDA DE CLIENTE");
+                    BTN_TROCA_GARAN.setText("TROCA EM GARANTIA");
                 if(QDT == 5){
                 v = 0;
                 TDA = 0;
@@ -2098,7 +2112,7 @@ public class Tela extends javax.swing.JFrame {
                 BOTAO_ZERAR.setEnabled(false);
                 }
             }
-        }
+        }//
         
     }//GEN-LAST:event_BOTAO_ZERARActionPerformed
 
@@ -2109,56 +2123,302 @@ public class Tela extends javax.swing.JFrame {
 
     private void BTN1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BTN1MouseClicked
         // TODO add your handling code here:
-        if(BTN1.isSelected()){
-            BTN1.setSelected(true);
-            BTN1.setForeground(Color.red);
+        ////////////////////////////////////////////////////////////////////////
+        Object[] options = { "Sim", "Não" };   
+         int opcao = JOptionPane.showOptionDialog(null,"Deseja desabilitar / habilitar este técnico ?","Aviso",
+        JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);   
+  
+        if (opcao != 0){
+        //JOptionPane.showMessageDialog(null,"");
         }else{
-            BTN1.setSelected(false);
-            BTN1.setForeground(Color.black);
-        }
+              
+            String senha = "";
+            int tentativas = 3;//Define o número de tentativas que o usuário terá para acertar a senha.
+            
+            for(int i=0;i<tentativas;i++)
+            {
+                if(!senha.equals(Senha))      
+                {
+                    
+                    if(habilitar_som == true){
+                        if(i == 0){
+                            play("primeira_tentativa");
+                        }else
+                        if(i == 1){
+                            play("segunda_tentativa");
+                        }else
+                        if(i == 2){
+                            play("terceira_tentativa");
+                        }
+                    }
+                    
+                    JPasswordField jpf = new JPasswordField();
+            
+                    JOptionPane.showConfirmDialog(null,new Object[]{ jpf},"Warning "+(i+1)+"ª tentativa.",JOptionPane.OK_CANCEL_OPTION,JOptionPane.QUESTION_MESSAGE);
+        
+                    senha = new String(jpf.getPassword());
+                    
+                }    
+            }
+            if (!senha.equals(Senha) || senha.equals(null))    
+            {
+                if(habilitar_som == true){
+                    play("senha_incorreta_ou_operacao_cancelada");//executa o arquivo wav
+                }
+                JOptionPane.showMessageDialog(null,"Senha incorreta ou operação cancelada","Aviso",JOptionPane.WARNING_MESSAGE);
+            }
+            else
+            {
+                 ////////////////////////////////////////////////////////////////////////
+                if(BTN1.isSelected()){
+                BTN1.setSelected(true);
+                BTN1.setForeground(Color.red);
+                }else{
+                BTN1.setSelected(false);
+                BTN1.setForeground(Color.black);
+                }
+            }///
+        }//
+       
     }//GEN-LAST:event_BTN1MouseClicked
 
     private void BTN2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BTN2MouseClicked
         // TODO add your handling code here:
-        if(BTN2.isSelected()){
-            BTN2.setSelected(true);
-            BTN2.setForeground(Color.red);
+        ////////////////////////////////////////////////////////////////////////
+        Object[] options = { "Sim", "Não" };   
+        int opcao = JOptionPane.showOptionDialog(null,"Deseja desabilitar / habilitar este técnico ?","Aviso",
+        JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);   
+  
+        if (opcao != 0){
+        //JOptionPane.showMessageDialog(null,"");
         }else{
-            BTN2.setSelected(false);
-            BTN2.setForeground(Color.black);
+              
+            String senha = "";
+            int tentativas = 3;//Define o número de tentativas que o usuário terá para acertar a senha.
+            
+            for(int i=0;i<tentativas;i++)
+            {
+                if(!senha.equals(Senha))      
+                {
+                    
+                    if(habilitar_som == true){
+                        if(i == 0){
+                            play("primeira_tentativa");
+                        }else
+                        if(i == 1){
+                            play("segunda_tentativa");
+                        }else
+                        if(i == 2){
+                            play("terceira_tentativa");
+                        }
+                    }
+                    
+                    JPasswordField jpf = new JPasswordField();
+            
+                    JOptionPane.showConfirmDialog(null,new Object[]{ jpf},"Warning "+(i+1)+"ª tentativa.",JOptionPane.OK_CANCEL_OPTION,JOptionPane.QUESTION_MESSAGE);
+        
+                    senha = new String(jpf.getPassword());
+                    
+                }    
+            }
+            if (!senha.equals(Senha) || senha.equals(null))    
+            {
+                if(habilitar_som == true){
+                    play("senha_incorreta_ou_operacao_cancelada");//executa o arquivo wav
+                }
+                JOptionPane.showMessageDialog(null,"Senha incorreta ou operação cancelada","Aviso",JOptionPane.WARNING_MESSAGE);
+            }
+            else
+            {
+                 ////////////////////////////////////////////////////////////////////////
+                if(BTN2.isSelected()){
+                BTN2.setSelected(true);
+                BTN2.setForeground(Color.red);
+                }else{
+                BTN2.setSelected(false);
+                BTN2.setForeground(Color.black);
+                }
+            }///
         }
     }//GEN-LAST:event_BTN2MouseClicked
 
     private void BTN3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BTN3MouseClicked
         // TODO add your handling code here:
-         if(BTN3.isSelected()){
-            BTN3.setSelected(true);
-            BTN3.setForeground(Color.red);
+        ////////////////////////////////////////////////////////////////////////
+        Object[] options = { "Sim", "Não" };   
+         int opcao = JOptionPane.showOptionDialog(null,"Deseja desabilitar / habilitar este técnico ?","Aviso",
+        JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]); 
+  
+        if (opcao != 0){
+        //JOptionPane.showMessageDialog(null,"");
         }else{
-            BTN3.setSelected(false);
-            BTN3.setForeground(Color.black);
+              
+            String senha = "";
+            int tentativas = 3;//Define o número de tentativas que o usuário terá para acertar a senha.
+            
+            for(int i=0;i<tentativas;i++)
+            {
+                if(!senha.equals(Senha))      
+                {
+                    
+                    if(habilitar_som == true){
+                        if(i == 0){
+                            play("primeira_tentativa");
+                        }else
+                        if(i == 1){
+                            play("segunda_tentativa");
+                        }else
+                        if(i == 2){
+                            play("terceira_tentativa");
+                        }
+                    }
+                    
+                    JPasswordField jpf = new JPasswordField();
+            
+                    JOptionPane.showConfirmDialog(null,new Object[]{ jpf},"Warning "+(i+1)+"ª tentativa.",JOptionPane.OK_CANCEL_OPTION,JOptionPane.QUESTION_MESSAGE);
+        
+                    senha = new String(jpf.getPassword());
+                    
+                }    
+            }
+            if (!senha.equals(Senha) || senha.equals(null))    
+            {
+                if(habilitar_som == true){
+                    play("senha_incorreta_ou_operacao_cancelada");//executa o arquivo wav
+                }
+                JOptionPane.showMessageDialog(null,"Senha incorreta ou operação cancelada","Aviso",JOptionPane.WARNING_MESSAGE);
+            }
+            else
+            {
+                 ////////////////////////////////////////////////////////////////////////
+                if(BTN3.isSelected()){
+                BTN3.setSelected(true);
+                BTN3.setForeground(Color.red);
+                }else{
+                BTN3.setSelected(false);
+                BTN3.setForeground(Color.black);
+                }
+            }///
         }
     }//GEN-LAST:event_BTN3MouseClicked
 
     private void BTN4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BTN4MouseClicked
         // TODO add your handling code here:
-        if(BTN4.isSelected()){
-            BTN4.setSelected(true);
-            BTN4.setForeground(Color.red);
+       ////////////////////////////////////////////////////////////////////////
+        Object[] options = { "Sim", "Não" };   
+         int opcao = JOptionPane.showOptionDialog(null,"Deseja desabilitar / habilitar este técnico ?","Aviso",
+        JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);  
+  
+        if (opcao != 0){
+        //JOptionPane.showMessageDialog(null,"");
         }else{
-            BTN4.setSelected(false);
-            BTN4.setForeground(Color.black);
+              
+            String senha = "";
+            int tentativas = 3;//Define o número de tentativas que o usuário terá para acertar a senha.
+            
+            for(int i=0;i<tentativas;i++)
+            {
+                if(!senha.equals(Senha))      
+                {
+                    
+                    if(habilitar_som == true){
+                        if(i == 0){
+                            play("primeira_tentativa");
+                        }else
+                        if(i == 1){
+                            play("segunda_tentativa");
+                        }else
+                        if(i == 2){
+                            play("terceira_tentativa");
+                        }
+                    }
+                    
+                    JPasswordField jpf = new JPasswordField();
+            
+                    JOptionPane.showConfirmDialog(null,new Object[]{ jpf},"Warning "+(i+1)+"ª tentativa.",JOptionPane.OK_CANCEL_OPTION,JOptionPane.QUESTION_MESSAGE);
+        
+                    senha = new String(jpf.getPassword());
+                    
+                }    
+            }
+            if (!senha.equals(Senha) || senha.equals(null))    
+            {
+                if(habilitar_som == true){
+                    play("senha_incorreta_ou_operacao_cancelada");//executa o arquivo wav
+                }
+                JOptionPane.showMessageDialog(null,"Senha incorreta ou operação cancelada","Aviso",JOptionPane.WARNING_MESSAGE);
+            }
+            else
+            {
+                 ////////////////////////////////////////////////////////////////////////
+                if(BTN4.isSelected()){
+                BTN4.setSelected(true);
+                BTN4.setForeground(Color.red);
+                }else{
+                BTN4.setSelected(false);
+                BTN4.setForeground(Color.black);
+                }
+            }///
         }
     }//GEN-LAST:event_BTN4MouseClicked
 
     private void BTN5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BTN5MouseClicked
         // TODO add your handling code here:
-         if(BTN5.isSelected()){
-            BTN5.setSelected(true);
-            BTN5.setForeground(Color.red);
+        ////////////////////////////////////////////////////////////////////////
+        Object[] options = { "Sim", "Não" };   
+         int opcao = JOptionPane.showOptionDialog(null,"Deseja desabilitar / habilitar este técnico ?","Aviso",
+        JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]); 
+  
+        if (opcao != 0){
+        //JOptionPane.showMessageDialog(null,"");
         }else{
-            BTN5.setSelected(false);
-            BTN5.setForeground(Color.black);
+              
+            String senha = "";
+            int tentativas = 3;//Define o número de tentativas que o usuário terá para acertar a senha.
+            
+            for(int i=0;i<tentativas;i++)
+            {
+                if(!senha.equals(Senha))      
+                {
+                    
+                    if(habilitar_som == true){
+                        if(i == 0){
+                            play("primeira_tentativa");
+                        }else
+                        if(i == 1){
+                            play("segunda_tentativa");
+                        }else
+                        if(i == 2){
+                            play("terceira_tentativa");
+                        }
+                    }
+                    
+                    JPasswordField jpf = new JPasswordField();
+            
+                    JOptionPane.showConfirmDialog(null,new Object[]{ jpf},"Warning "+(i+1)+"ª tentativa.",JOptionPane.OK_CANCEL_OPTION,JOptionPane.QUESTION_MESSAGE);
+        
+                    senha = new String(jpf.getPassword());
+                    
+                }    
+            }
+            if (!senha.equals(Senha) || senha.equals(null))    
+            {
+                if(habilitar_som == true){
+                    play("senha_incorreta_ou_operacao_cancelada");//executa o arquivo wav
+                }
+                JOptionPane.showMessageDialog(null,"Senha incorreta ou operação cancelada","Aviso",JOptionPane.WARNING_MESSAGE);
+            }
+            else
+            {
+                 ////////////////////////////////////////////////////////////////////////
+                if(BTN5.isSelected()){
+                BTN5.setSelected(true);
+                BTN5.setForeground(Color.red);
+                }else{
+                BTN5.setSelected(false);
+                BTN5.setForeground(Color.black);
+                }
+            }///
         }
     }//GEN-LAST:event_BTN5MouseClicked
 
@@ -2541,51 +2801,117 @@ public class Tela extends javax.swing.JFrame {
 
     private void BTN_CHECKLISTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_CHECKLISTActionPerformed
         // TODO add your handling code here:
-        chamar_Tecnico("0");
-        t0++;
-        BTN_CHECKLIST.setText("CHECKLIST - "+t0);
+        ////////////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////
+        Object[] options = { "Sim", "Não" };   
+         int opcao = JOptionPane.showOptionDialog(null,"Deseja chamar o próximo técnico ?","Aviso",
+        JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);   
+  
+        if (opcao != 0){
+        //JOptionPane.showMessageDialog(null,"");
+        }else{
+                    chamar_Tecnico("0");
+                    t0++;
+                    BTN_CHECKLIST.setText("CHECKLIST - "+t0);
+        }//
+        ////////////////////////////////////////////////////////////////////////
+       
     }//GEN-LAST:event_BTN_CHECKLISTActionPerformed
 
     private void BTN_RECARGAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_RECARGAActionPerformed
         // TODO add your handling code here:
-        chamar_Tecnico("1");
+        Object[] options = { "Sim", "Não" };   
+         int opcao = JOptionPane.showOptionDialog(null,"Deseja chamar o próximo técnico ?","Aviso",
+        JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);   
+  
+        if (opcao != 0){
+        //JOptionPane.showMessageDialog(null,"");
+        }else{
+              chamar_Tecnico("1");
         t1++;
-        BTN_RECARGA.setText("RECARGA DE CARTUCHO - "+t1);
+        BTN_RECARGA.setText("RECARGA DE CARTUCHO - "+t1);      
+        }//
+        
     }//GEN-LAST:event_BTN_RECARGAActionPerformed
 
     private void BTN_SITU_DIFEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_SITU_DIFEActionPerformed
         // TODO add your handling code here:
-        chamar_Tecnico("2");
+        Object[] options = { "Sim", "Não" };   
+         int opcao = JOptionPane.showOptionDialog(null,"Deseja chamar o próximo técnico ?","Aviso",
+        JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);   
+  
+        if (opcao != 0){
+        //JOptionPane.showMessageDialog(null,"");
+        }else{
+              chamar_Tecnico("2");
         t2++;
-        BTN_SITU_DIFE.setText("SITUAÇÃO DIFERENCIADA - "+t2);
+        BTN_SITU_DIFE.setText("SITUAÇÃO DIFERENCIADA - "+t2);     
+        }//
+        
     }//GEN-LAST:event_BTN_SITU_DIFEActionPerformed
 
     private void BTN_TIRA_DUVIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_TIRA_DUVIActionPerformed
         // TODO add your handling code here:
-        chamar_Tecnico("3");
+        Object[] options = { "Sim", "Não" };   
+         int opcao = JOptionPane.showOptionDialog(null,"Deseja chamar o próximo técnico ?","Aviso",
+        JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);   
+  
+        if (opcao != 0){
+        //JOptionPane.showMessageDialog(null,"");
+        }else{
+              chamar_Tecnico("3");
         t3++;
-        BTN_TIRA_DUVI.setText("TIRAR DÚVIDA DE CLIENTE - "+t3);
+        BTN_TIRA_DUVI.setText("TIRAR DÚVIDA DE CLIENTE - "+t3);    
+        }//
+        
     }//GEN-LAST:event_BTN_TIRA_DUVIActionPerformed
 
     private void BTN_GERAR_CREDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_GERAR_CREDActionPerformed
         // TODO add your handling code here:
-        chamar_Tecnico("4");
+        Object[] options = { "Sim", "Não" };   
+         int opcao = JOptionPane.showOptionDialog(null,"Deseja chamar o próximo técnico ?","Aviso",
+        JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);   
+  
+        if (opcao != 0){
+        //JOptionPane.showMessageDialog(null,"");
+        }else{
+              chamar_Tecnico("4");
         t4++;
-        BTN_GERAR_CRED.setText("GERAR CRÉDITO - "+t4);
+        BTN_GERAR_CRED.setText("GERAR CRÉDITO - "+t4); 
+        }//
+        
     }//GEN-LAST:event_BTN_GERAR_CREDActionPerformed
 
     private void BTN_TROCA_GARANActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_TROCA_GARANActionPerformed
         // TODO add your handling code here:
-        chamar_Tecnico("5");
+        Object[] options = { "Sim", "Não" };   
+         int opcao = JOptionPane.showOptionDialog(null,"Deseja chamar o próximo técnico ?","Aviso",
+        JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);   
+  
+        if (opcao != 0){
+        //JOptionPane.showMessageDialog(null,"");
+        }else{
+             chamar_Tecnico("5");
         t5++;
         BTN_TROCA_GARAN.setText("TROCA EM GARANTIA - "+t5);
+        }//
+        
     }//GEN-LAST:event_BTN_TROCA_GARANActionPerformed
 
     private void BTN_PLUSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_PLUSActionPerformed
         // TODO add your handling code here:
-        chamar_Tecnico("6");
+         Object[] options = { "Sim", "Não" };   
+         int opcao = JOptionPane.showOptionDialog(null,"Deseja chamar o próximo técnico ?","Aviso",
+        JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);   
+  
+        if (opcao != 0){
+        //JOptionPane.showMessageDialog(null,"");
+        }else{
+             chamar_Tecnico("6");
         t6++;
         BTN_PLUS.setText("PLUS - "+t6);
+        }//
+        
     }//GEN-LAST:event_BTN_PLUSActionPerformed
 
     private void BTN_CHECKLISTMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BTN_CHECKLISTMouseEntered
