@@ -951,7 +951,8 @@ public class Tela extends javax.swing.JFrame {
     
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         
-        setIconImage(new ImageIcon(getClass().getResource("/CODIGOS/IMAGENS/vistamizer-windows-vista-wallpaper-pack-14.jpg")).getImage());//Define o icone da janela
+        /*Define o icone da janela*/
+        setIconImage(new ImageIcon(getClass().getResource("/CODIGOS/Imagens/vistamizer-windows-vista-wallpaper-pack-14.jpg")).getImage());
         
         setVisible(false);//A TELA INICIA INVISIVEL
         
