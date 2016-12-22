@@ -161,6 +161,10 @@ public class Tela extends javax.swing.JFrame {
             if(opcao.equals("6")){
                 play("atendimento_para_plus");
             }
+            
+            ModificaArquivo ma = new ModificaArquivo();
+            ma.ModificaArquivo(v, TDA, AT1, AT2, AT3);
+            
             }
                 
         }
@@ -950,6 +954,21 @@ public class Tela extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
     
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        
+        CriaPasta cp = new CriaPasta();
+        CriaArquivoNovo ca = new CriaArquivoNovo();
+        LerArquivo la = new LerArquivo();
+        
+        cp.CriaPasta();
+        la.LerArquivo();
+        
+        v = Integer.parseInt(la.v);
+        TDA = Integer.parseInt(la.TDA);
+        AT1 = Integer.parseInt(la.AT1);
+        AT2 = Integer.parseInt(la.AT2);
+        AT3 = Integer.parseInt(la.AT3);
+        
+//        System.out.println(la.v);
         
         /**Define o icone da janela**/
         setIconImage(new ImageIcon(getClass().getResource("/CODIGOS/Imagens/vistamizer-windows-vista-wallpaper-pack-14.jpg")).getImage());
