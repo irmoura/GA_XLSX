@@ -26,6 +26,13 @@ public class LerArquivo {
     public String AT1;//TOTAL DE ATENDIMENTO 1
     public String AT2;//TOTAL DE ATENDIMENTO 2
     public String AT3;//TOTAL DE ATENDIMENTO 3
+    public String t0;
+    public String t1;
+    public String t2;
+    public String t3;
+    public String t4;
+    public String t5;
+    public String t6;
     
     public void LerArquivo(){
         
@@ -51,6 +58,13 @@ public class LerArquivo {
                 AT1 = bufferedReader.readLine();//TOTAL DE ATENDIMENTO 1
                 AT2 = bufferedReader.readLine();//TOTAL DE ATENDIMENTO 2
                 AT3 = bufferedReader.readLine();//TOTAL DE ATENDIMENTO 3
+                t0 = bufferedReader.readLine();//
+                t1 = bufferedReader.readLine();//
+                t2 = bufferedReader.readLine();//
+                t3 = bufferedReader.readLine();//
+                t4 = bufferedReader.readLine();//
+                t5 = bufferedReader.readLine();//
+                t6 = bufferedReader.readLine();//
 //                System.out.println(TA);
             } catch (IOException ex) {
 //                Logger.getLogger(LerArquivo.class.getName()).log(Level.SEVERE, null, ex);

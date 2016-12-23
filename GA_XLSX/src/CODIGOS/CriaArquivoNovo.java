@@ -46,6 +46,13 @@ public class CriaArquivoNovo {
               gravarArq.println("0");//TOTAL DE ATENDIMENTO 1
               gravarArq.println("0");//TOTAL DE ATENDIMENTO 2
               gravarArq.println("0");//TOTAL DE ATENDIMENTO 3
+              gravarArq.println("0");//t0
+              gravarArq.println("0");//t1
+              gravarArq.println("0");//t2
+              gravarArq.println("0");//t3
+              gravarArq.println("0");//t4
+              gravarArq.println("0");//t5
+              gravarArq.println("0");//t6
         }
         
         try {
