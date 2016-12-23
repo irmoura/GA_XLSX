@@ -12,6 +12,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -57,6 +58,8 @@ public class CriaArquivoNovo {
         
         try {
             Obs.close();
+            JOptionPane.showMessageDialog(null,"Base de dados criada com sucesso.","Aviso",JOptionPane.INFORMATION_MESSAGE);
+            System.exit(0);
         } catch (IOException ex) {
             Logger.getLogger(CriaArquivoNovo.class.getName()).log(Level.SEVERE, null, ex);
         }
