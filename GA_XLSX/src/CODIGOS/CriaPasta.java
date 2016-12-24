@@ -5,6 +5,7 @@
  */
 package CODIGOS;
 
+import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -26,6 +27,14 @@ public class CriaPasta {
         
         java.io.File DATA_DA_PASTA = new java.io.File("C:\\GA_XLSX\\"+dia_int+"-"+mes_int+"-"+ano_int);//CRIA A PASTA COM A DATA DEFINIDA NO SISTEMA
         DATA_DA_PASTA.mkdir();
+        
+        /**********************************************************************/
+        File file = new File("C:\\GA_XLSX\\"+dia_int+"-"+mes_int+"-"+ano_int);
+        
+        Ocultar o = new Ocultar();
+        
+        o.ocultar(file);//APÓS CRIAR A PASTA A MESMA É OCULTADA
+        /**********************************************************************/
         
     }
 }

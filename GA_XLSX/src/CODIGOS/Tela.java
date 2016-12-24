@@ -727,7 +727,7 @@ public class Tela extends javax.swing.JFrame {
         JanelaInternaPrincipal.add(TEXTO_HORA, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 20, -1, -1));
 
         TEXTO_DESENVOLVEDOR.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        TEXTO_DESENVOLVEDOR.setText("Desenvolvedor : Ismael Ribeiro                                                                                                                               Versão: 071220162014");
+        TEXTO_DESENVOLVEDOR.setText("Desenvolvedor : Ismael Ribeiro                                                                                                                               Versão: 241220160922");
         TEXTO_DESENVOLVEDOR.setToolTipText("");
         JanelaInternaPrincipal.add(TEXTO_DESENVOLVEDOR, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 420, -1, -1));
 
@@ -954,7 +954,7 @@ public class Tela extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
     
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        
+     
         /**********************************************************************/
         
         CriaPasta cp = new CriaPasta();
