@@ -14,6 +14,7 @@ import java.awt.Color;
 import java.awt.Robot;
 import java.awt.event.ActionEvent;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.math.BigInteger;
@@ -28,6 +29,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.Timer;
+import javazoom.jl.decoder.JavaLayerException;
+import javazoom.jl.player.Player;
 import sun.audio.AudioPlayer;
 import sun.audio.AudioStream;
 
@@ -40,6 +43,20 @@ public class Tela extends javax.swing.JFrame {
     public ModificaArquivo ma;
     
     public String senha = "";
+    
+    public void mp3(String local){
+        try {
+            FileInputStream fis = new FileInputStream(local);
+            try {
+                Player playMP3 = new Player(fis);
+                playMP3.play();
+            } catch (JavaLayerException ex) {
+                Logger.getLogger(Tela.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } catch (FileNotFoundException ex) {
+            System.out.println("Arquivo não encontrado.");
+        }
+    }
     
     public void hash(String senha){
         ////////////////////////////////////////////////////////////
@@ -954,7 +971,7 @@ public class Tela extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
     
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-     
+               
         /**********************************************************************/
         
         CriaPasta cp = new CriaPasta();
@@ -1034,6 +1051,7 @@ public class Tela extends javax.swing.JFrame {
             else
             {
                 this.senha = "";
+//                mp3("C:\\1.mp3");
                 setVisible(true);
             }
         }
