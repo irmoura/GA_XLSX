@@ -625,6 +625,7 @@ public class Tela extends javax.swing.JFrame {
         BTN_GERAR_CRED = new javax.swing.JButton();
         BTN_TROCA_GARAN = new javax.swing.JButton();
         BTN_PLUS = new javax.swing.JButton();
+        BTN_EXIT = new javax.swing.JButton();
         PAPEL_DE_PAREDE = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenuConfigurar = new javax.swing.JMenu();
@@ -925,7 +926,18 @@ public class Tela extends javax.swing.JFrame {
         });
         JanelaInternaPrincipal.add(BTN_PLUS, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 340, -1, -1));
 
-        PAPEL_DE_PAREDE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/CODIGOS/Imagens/vistamizer-windows-vista-wallpaper-pack-14.jpg"))); // NOI18N
+        BTN_EXIT.setIcon(new javax.swing.ImageIcon(getClass().getResource("/CODIGOS/Imagens/exit_button-128.png"))); // NOI18N
+        BTN_EXIT.setText("EXIT");
+        BTN_EXIT.setBorderPainted(false);
+        BTN_EXIT.setContentAreaFilled(false);
+        BTN_EXIT.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTN_EXITActionPerformed(evt);
+            }
+        });
+        JanelaInternaPrincipal.add(BTN_EXIT, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 340, 90, 60));
+
+        PAPEL_DE_PAREDE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/CODIGOS/Imagens/papel-de-parede-de-natal (3).jpg"))); // NOI18N
         PAPEL_DE_PAREDE.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 PAPEL_DE_PAREDEMouseClicked(evt);
@@ -993,7 +1005,7 @@ public class Tela extends javax.swing.JFrame {
         /**********************************************************************/
         
         /**Define o icone da janela**/
-        setIconImage(new ImageIcon(getClass().getResource("/CODIGOS/Imagens/vistamizer-windows-vista-wallpaper-pack-14.jpg")).getImage());
+        setIconImage(new ImageIcon(getClass().getResource("/CODIGOS/Imagens/papel-de-parede-de-natal (3).jpg")).getImage());
         
         setVisible(false);//A TELA INICIA INVISIVEL
         
@@ -1609,9 +1621,9 @@ public class Tela extends javax.swing.JFrame {
         
         obterHoras();//OBTEM A HORA EM QUE O PROGRAMA É ABERTO
         BOTAO_ZERAR.setEnabled(false);
-        TEXTO_HORA.setForeground(Color.yellow);
-        TEXTO_TOTAL.setForeground(Color.yellow);
-        TEXTO_CRONOMETRO.setForeground(Color.yellow);
+        TEXTO_HORA.setForeground(Color.BLACK);
+        TEXTO_TOTAL.setForeground(Color.BLACK);
+        TEXTO_CRONOMETRO.setForeground(Color.BLACK);
         
         timer = new Timer(1000, (ActionEvent e) -> {
             
@@ -3146,6 +3158,59 @@ public class Tela extends javax.swing.JFrame {
         BTN_PLUS.setForeground(Color.black);
     }//GEN-LAST:event_BTN_PLUSMouseExited
 
+    private void BTN_EXITActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_EXITActionPerformed
+        // TODO add your handling code here:
+        Object[] options = { "Sim", "Não" };   
+        int opcao = JOptionPane.showOptionDialog(null,"Deseja sair ?","Aviso",
+        JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE, null, options, options[0]);   
+  
+        if (opcao != 0){
+        //JOptionPane.showMessageDialog(null,"");
+        }else{
+              
+            int tentativas = 3;//Define o número de tentativas que o usuário terá para acertar a senha.
+            
+            for(int i=0;i<tentativas;i++)
+            {
+                if(!senha.equals(Senha))      
+                {
+                    
+                    if(habilitar_som == true){
+                        if(i == 0){
+                            play("primeira_tentativa");
+                        }else
+                        if(i == 1){
+                            play("segunda_tentativa");
+                        }else
+                        if(i == 2){
+                            play("terceira_tentativa");
+                        }
+                    }
+                    
+                    JPasswordField jpf = new JPasswordField();
+            
+                    JOptionPane.showConfirmDialog(null,new Object[]{ jpf},"Warning "+(i+1)+"ª tentativa.",JOptionPane.OK_CANCEL_OPTION,JOptionPane.QUESTION_MESSAGE);
+        
+                    senha = new String(jpf.getPassword());
+                    
+                    hash(senha);
+                    
+                }    
+            }
+            if (!senha.equals(Senha) || senha.equals(null))    
+            {
+                if(habilitar_som == true){
+                    play("senha_incorreta_ou_operacao_cancelada");//executa o arquivo wav
+                }
+                JOptionPane.showMessageDialog(null,"Senha incorreta ou operação cancelada","Aviso",JOptionPane.WARNING_MESSAGE);
+            }
+            else
+            {
+                System.exit(0);
+            }
+        }//
+    }//GEN-LAST:event_BTN_EXITActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -3196,6 +3261,7 @@ public class Tela extends javax.swing.JFrame {
     private javax.swing.JToggleButton BTN4;
     private javax.swing.JToggleButton BTN5;
     private javax.swing.JButton BTN_CHECKLIST;
+    private javax.swing.JButton BTN_EXIT;
     private javax.swing.JButton BTN_GERAR_CRED;
     private javax.swing.JButton BTN_PLUS;
     private javax.swing.JButton BTN_RECARGA;
