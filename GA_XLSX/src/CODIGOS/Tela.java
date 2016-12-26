@@ -7,18 +7,13 @@ package CODIGOS;
 
 import static CODIGOS.Planilha.PS;
 import static CODIGOS.Planilha.lerPlanilha;
-import java.applet.Applet;
-import java.applet.AudioClip;
 import java.awt.AWTException;
 import java.awt.Color;
 import java.awt.Robot;
 import java.awt.event.ActionEvent;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
 import java.math.BigInteger;
-import java.net.URL;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Calendar;
@@ -31,8 +26,6 @@ import javax.swing.JPasswordField;
 import javax.swing.Timer;
 import javazoom.jl.decoder.JavaLayerException;
 import javazoom.jl.player.Player;
-import sun.audio.AudioPlayer;
-import sun.audio.AudioStream;
 
 /**
  *
@@ -44,14 +37,16 @@ public class Tela extends javax.swing.JFrame {
     
     public String senha = "";
     
-    public void mp3(String local){
+    public void play(String nomeDoAudio){
+        /*EXECUTA UM ARQUIVO MP3*/
         try {
-            FileInputStream fis = new FileInputStream(local);
+            FileInputStream fis = new FileInputStream("C:/GA_XLSX/"+nomeDoAudio+".mp3");
             try {
                 Player playMP3 = new Player(fis);
                 playMP3.play();
             } catch (JavaLayerException ex) {
                 Logger.getLogger(Tela.class.getName()).log(Level.SEVERE, null, ex);
+                JOptionPane.showMessageDialog(null,"O EM "+nomeDoAudio+" da planilha não corresponde aos arquivos de áudio existentes.");
             }
         } catch (FileNotFoundException ex) {
             System.out.println("Arquivo não encontrado.");
@@ -74,26 +69,26 @@ public class Tela extends javax.swing.JFrame {
                 ////////////////////////////////////////////////////////////
     }
     
-    public void play(String nomeDoAudio){
-        
-//        URL url = getClass().getResource("/CODIGOS/Sons/"+nomeDoAudio+".wav");//wav
-//        AudioClip audio = Applet.newAudioClip(url);
-//        audio.play();
-
-         try {
-             
-             //"\\\\HP-G42\\Users\\Public\\GA_XLSX\\"
-             //"C:/GA_XLSX/"
-             
-            String wav_file = "C:/GA_XLSX/"+nomeDoAudio+".wav";
-            InputStream in = new FileInputStream(wav_file);
-            AudioStream audio = new AudioStream(in);
-            AudioPlayer.player.start(audio);
-        } catch (IOException ex) {
-            Logger.getLogger(Tela.class.getName()).log(Level.SEVERE, null, ex);
-            JOptionPane.showMessageDialog(null,"O EM "+nomeDoAudio+" da planilha não corresponde ao arquivo de áudio existente");
-        }
-}
+//    public void play(String nomeDoAudio){
+//          /*EXECUTA UM ARQUIVO WMA*/
+////        URL url = getClass().getResource("/CODIGOS/Sons/"+nomeDoAudio+".wav");//wav
+////        AudioClip audio = Applet.newAudioClip(url);
+////        audio.play();
+//
+//         try {
+//             
+//             //"\\\\HP-G42\\Users\\Public\\GA_XLSX\\"
+//             //"C:/GA_XLSX/"
+//             
+//            String wav_file = "C:/GA_XLSX/"+nomeDoAudio+".wav";
+//            InputStream in = new FileInputStream(wav_file);
+//            AudioStream audio = new AudioStream(in);
+//            AudioPlayer.player.start(audio);
+//        } catch (IOException ex) {
+//            Logger.getLogger(Tela.class.getName()).log(Level.SEVERE, null, ex);
+//            JOptionPane.showMessageDialog(null,"O EM "+nomeDoAudio+" da planilha não corresponde ao arquivo de áudio existente");
+//        }
+//}
     
     public void chamar_Tecnico(String OPCAO){
         ////////////////////////////////////////////////////////////////////////
@@ -142,7 +137,7 @@ public class Tela extends javax.swing.JFrame {
             try {
                 Robot bot = new Robot();
                 if(falar_situacao==true){
-                    bot.delay(3000);
+                    bot.delay(500);
                 }
                 
                 setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
