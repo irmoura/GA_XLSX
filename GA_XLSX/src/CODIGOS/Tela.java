@@ -13,6 +13,7 @@ import java.awt.Robot;
 import java.awt.event.ActionEvent;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -38,19 +39,34 @@ public class Tela extends javax.swing.JFrame {
     public String senha = "";
     
     public void play(String nomeDoAudio){
-        /*EXECUTA UM ARQUIVO MP3*/
         try {
-            FileInputStream fis = new FileInputStream("C:/GA_XLSX/"+nomeDoAudio+".mp3");
-            try {
-                Player playMP3 = new Player(fis);
-                playMP3.play();
-            } catch (JavaLayerException ex) {
-                Logger.getLogger(Tela.class.getName()).log(Level.SEVERE, null, ex);
-                JOptionPane.showMessageDialog(null,"O EM "+nomeDoAudio+" da planilha não corresponde aos arquivos de áudio existentes.");
-            }
-        } catch (FileNotFoundException ex) {
-            System.out.println("Arquivo não encontrado.");
+            //        /*EXECUTA UM ARQUIVO MP3*/
+//        try {
+//            FileInputStream fis = new FileInputStream("C:/GA_XLSX/"+nomeDoAudio+".mp3");
+//            try {
+//                Player playMP3 = new Player(fis);
+//                playMP3.play();
+//            } catch (JavaLayerException ex) {
+//                Logger.getLogger(Tela.class.getName()).log(Level.SEVERE, null, ex);
+//                JOptionPane.showMessageDialog(null,"O EM "+nomeDoAudio+" da planilha não corresponde aos arquivos de áudio existentes.");
+//            }
+//        } catch (FileNotFoundException ex) {
+//            System.out.println("Arquivo não encontrado.");
+//        }
+
+        Runtime.getRuntime().exec("cmd /c start /B C:\\GA_XLSX\\Player\\dist\\Player.jar "+nomeDoAudio);
+        } catch (IOException ex) {
+            Logger.getLogger(Tela.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
+    }
+    
+    public void play2(String nomeDoAudio){
+        try {
+        Runtime.getRuntime().exec("cmd /c start /B C:\\GA_XLSX\\Player\\dist\\Player.jar "+nomeDoAudio+" "+"3000");
+        } catch (IOException ex) {
+            Logger.getLogger(Tela.class.getName()).log(Level.SEVERE, null, ex);
+        }      
     }
     
     public void hash(String senha){
@@ -137,7 +153,12 @@ public class Tela extends javax.swing.JFrame {
             try {
                 Robot bot = new Robot();
                 if(falar_situacao==true){
-                    bot.delay(500);
+//                    try {
+//                        //                    bot.delay(3000);
+//                        Thread.sleep(3000);
+//                    } catch (InterruptedException ex) {
+//                        Logger.getLogger(Tela.class.getName()).log(Level.SEVERE, null, ex);
+//                    }
                 }
                 
                 setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -155,25 +176,25 @@ public class Tela extends javax.swing.JFrame {
                 
             
             if(opcao.equals("0")){
-                play("checklist");
+                play2("checklist");
             }else
             if(opcao.equals("1")){
-                play("recarga_de_cartucho");
+                play2("recarga_de_cartucho");
             }else
             if(opcao.equals("2")){
-                play("situacao_diferenciada");
+                play2("situacao_diferenciada");
             }else
             if(opcao.equals("3")){
-                play("tirar_duvida_de_cliente");
+                play2("tirar_duvida_de_cliente");
             }else
             if(opcao.equals("4")){
-                play("atendimento_para_gerar_credito");//GERAR CREDITO
+                play2("atendimento_para_gerar_credito");//GERAR CREDITO
             }else
             if(opcao.equals("5")){
-                play("troca_em_garantia");
+                play2("troca_em_garantia");
             }else
             if(opcao.equals("6")){
-                play("atendimento_para_plus");
+                play2("atendimento_para_plus");
             }
             
             }
@@ -2328,14 +2349,15 @@ public class Tela extends javax.swing.JFrame {
     private void BTN2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BTN2MouseClicked
         // TODO add your handling code here:
         ////////////////////////////////////////////////////////////////////////
-        Object[] options = { "Sim", "Não" };   
+        Object[] options = { "Sim", "Não"/*, "Intervalo" */};   
         int opcao = JOptionPane.showOptionDialog(null,"Deseja desabilitar / habilitar este técnico ?","Aviso",
         JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);   
   
-        if (opcao != 0){
+        if (opcao == 1){
         BTN2.setSelected(false);
         BTN2.setForeground(Color.black);
-        }else{
+        }else
+        if (opcao == 0){
               
 //            String senha = "";
             int tentativas = 3;//Define o número de tentativas que o usuário terá para acertar a senha.
@@ -2388,7 +2410,14 @@ public class Tela extends javax.swing.JFrame {
                 BTN2.setForeground(Color.black);
                 }
             }///
-        }
+        }/*else
+            if(opcao == 2){
+            try {
+                Runtime.getRuntime().exec("cmd /c start /B C:\\Users\\irmoura\\Documents\\NetBeansProjects\\Player\\dist\\Player.jar nome");
+            } catch (IOException ex) {
+                Logger.getLogger(Tela.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            }*/
     }//GEN-LAST:event_BTN2MouseClicked
 
     private void BTN3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BTN3MouseClicked
