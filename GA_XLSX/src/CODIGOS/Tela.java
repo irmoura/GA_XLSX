@@ -32,6 +32,53 @@ public class Tela extends javax.swing.JFrame {
     
     public String senha = "";
     
+    public void temporizador1(){
+        BTN1.setSelected(true);
+        BTN1.setForeground(Color.red); 
+        segundos_totais1 = 0;
+        minutos_totais1 = 0;
+        horas_totais1 = 1;
+        timer1 = new Timer(1000, (ActionEvent e) -> {
+            if(segundos_totais1  < 0){
+                if(horas_totais1 > 0 && minutos_totais1 == 0){
+                    minutos_totais1 = 60;
+                    horas_totais1--;
+                }
+                if(minutos_totais1 > 0){
+                    segundos_totais1 = 59;
+                    minutos_totais1--;
+                }else if(minutos_totais1 == 0){
+                    timer1.stop();
+                }
+            }
+            if(segundos_totais1 > 9){
+            segundos_string1 = ""+segundos_totais1;
+            }else if(segundos_totais1 < 10){
+            segundos_string1 = "0"+segundos_totais1;
+            }
+            if(minutos_totais1 > 9){
+                minutos_string1 = ""+minutos_totais1;
+            }else if(minutos_totais1 < 10){
+                minutos_string1 = "0"+minutos_totais1;
+            }
+            if(horas_totais1 > 9){
+                horas_string1 = ""+horas_totais1;
+            }else if(horas_totais1 < 10){
+                horas_string1 = "0"+horas_totais1;
+            }
+            tempo_completo1 = horas_string1+":"+minutos_string1+":"+segundos_string1;
+            if((segundos_totais1 != -1)){
+            System.out.println(tempo_completo1);
+            if(tempo_completo1.equals("00:00:00")){
+                    BTN1.setSelected(false);
+                    BTN1.setForeground(Color.black);  
+                }
+            }
+            segundos_totais1--;
+        });
+        timer1.start();
+    }
+    
     public void play(String nomeDoAudio){
         try {
 
@@ -200,13 +247,18 @@ public class Tela extends javax.swing.JFrame {
     public String horas;
     public String opcao;
     public Calendar now;
-    public Timer timer;
+    public Timer timer, timer1, timer2;
     
     public String segundos;
     public String minutos;
     public String HC;//HORARIO CRONOMETRO
     public int minutos_int;
     public int horas_int;
+    
+    public int segundos_totais1, minutos_totais1, horas_totais1;
+    public String segundos_string1, minutos_string1, horas_string1, tempo_completo1;
+    public int segundos_totais2, minutos_totais2, horas_totais2;
+    public String segundos_string2, minutos_string2, horas_string2, tempo_completo2;
     
     public String arquivo = "CONFIG4";
     public String senha_de_chamada = "19216811";
@@ -2223,14 +2275,15 @@ public class Tela extends javax.swing.JFrame {
     private void BTN1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BTN1MouseClicked
         // TODO add your handling code here:
         ////////////////////////////////////////////////////////////////////////
-        Object[] options = { "Sim", "Não" };   
+        Object[] options = { "Sim", "Não", "Intervalo" };   
          int opcao = JOptionPane.showOptionDialog(null,"Deseja desabilitar / habilitar este técnico ?","Aviso",
         JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);   
   
-        if (opcao != 0){
+        if (opcao == 1){
         BTN1.setSelected(false);
         BTN1.setForeground(Color.black);
-        }else{
+        }else
+        if (opcao == 0){
               
 //            String senha = "";
             int tentativas = 3;//Define o número de tentativas que o usuário terá para acertar a senha.
@@ -2284,13 +2337,60 @@ public class Tela extends javax.swing.JFrame {
                 }
             }///
         }//
+        else
+        if(opcao == 2){
+                 
+//            String senha = "";
+            int tentativas = 3;//Define o número de tentativas que o usuário terá para acertar a senha.
+            
+            for(int i=0;i<tentativas;i++)
+            {
+                if(!senha.equals(Senha))      
+                {
+                    
+                    if(habilitar_som == true){
+                        if(i == 0){
+                            play("primeira_tentativa");
+                        }else
+                        if(i == 1){
+                            play("segunda_tentativa");
+                        }else
+                        if(i == 2){
+                            play("terceira_tentativa");
+                        }
+                    }
+                    
+                    JPasswordField jpf = new JPasswordField();
+            
+                    JOptionPane.showConfirmDialog(null,new Object[]{ jpf},"Warning "+(i+1)+"ª tentativa.",JOptionPane.OK_CANCEL_OPTION,JOptionPane.QUESTION_MESSAGE);
+        
+                    senha = new String(jpf.getPassword());
+                    
+                    hash(senha);
+                    
+                }    
+            }
+            if (!senha.equals(Senha) || senha.equals(null))    
+            {
+                if(habilitar_som == true){
+                    play("senha_incorreta_ou_operacao_cancelada");//executa o arquivo wav
+                }
+                BTN1.setSelected(false);
+                BTN1.setForeground(Color.black);
+                JOptionPane.showMessageDialog(null,"Senha incorreta ou operação cancelada","Aviso",JOptionPane.WARNING_MESSAGE);
+            }
+            else
+            {
+                temporizador1();
+            }///
+        }
        
     }//GEN-LAST:event_BTN1MouseClicked
 
     private void BTN2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BTN2MouseClicked
         // TODO add your handling code here:
         ////////////////////////////////////////////////////////////////////////
-        Object[] options = { "Sim", "Não", "Intervalo" };   
+        Object[] options = { "Sim", "Não"/*, "Intervalo" */};   
         int opcao = JOptionPane.showOptionDialog(null,"Deseja desabilitar / habilitar este técnico ?","Aviso",
         JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);   
   
@@ -2351,10 +2451,10 @@ public class Tela extends javax.swing.JFrame {
                 BTN2.setForeground(Color.black);
                 }
             }///
-        }else
+        }/*else
             if(opcao == 2){
-                
-            }
+                temporizador2();
+            }*/
     }//GEN-LAST:event_BTN2MouseClicked
 
     private void BTN3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BTN3MouseClicked
