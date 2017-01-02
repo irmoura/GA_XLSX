@@ -42,18 +42,35 @@ public class CriaArquivoNovo {
         PrintWriter gravarArq = new PrintWriter(Obs);
         {
             /*VALORES PADRAO*/
+            if(Tela.QDT == 3){
               gravarArq.println("0");//VEZ
               gravarArq.println("0");//TOTAL DE ATENDIMENTO
               gravarArq.println("0");//TOTAL DE ATENDIMENTO 1
               gravarArq.println("0");//TOTAL DE ATENDIMENTO 2
               gravarArq.println("0");//TOTAL DE ATENDIMENTO 3
-              gravarArq.println("0");//t0
-              gravarArq.println("0");//t1
-              gravarArq.println("0");//t2
-              gravarArq.println("0");//t3
-              gravarArq.println("0");//t4
-              gravarArq.println("0");//t5
-              gravarArq.println("0");//t6
+              gravarArq.println("0");//
+              gravarArq.println("0");//
+              gravarArq.println("0");//
+              gravarArq.println("0");//
+              gravarArq.println("0");//
+              gravarArq.println("0");//
+              gravarArq.println("0");//
+            }else
+            if(Tela.QDT == 4){
+              gravarArq.println("0");//VEZ
+              gravarArq.println("0");//TOTAL DE ATENDIMENTO
+              gravarArq.println("0");//TOTAL DE ATENDIMENTO 1
+              gravarArq.println("0");//TOTAL DE ATENDIMENTO 2
+              gravarArq.println("0");//TOTAL DE ATENDIMENTO 3
+              gravarArq.println("0");//TOTAL DE ATENDIMENTO 4
+              gravarArq.println("0");//
+              gravarArq.println("0");//
+              gravarArq.println("0");//
+              gravarArq.println("0");//
+              gravarArq.println("0");//
+              gravarArq.println("0");//
+              gravarArq.println("0");//
+            }
         }
         
         try {

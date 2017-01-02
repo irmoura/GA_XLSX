@@ -206,7 +206,7 @@ public class Tela extends javax.swing.JFrame {
     public int AT4;//Atendimentos Técnico 4
     public int AT5;//Atendimentos Técnico 5
     public int contador, contador_piada, contador_chamar_novamente,t0,t1,t2,t3,t4,t5,t6;
-    public int QDT;
+    public static int QDT;
     
     public int HCT1;
     public int MCT1;
@@ -992,7 +992,12 @@ public class Tela extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
     
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-               
+        
+        lerPlanilha(arquivo);
+        
+        /*QDT*/
+        QDT = Integer.parseInt(PS[0]);
+        
         /**********************************************************************/
         
         CriaPasta cp = new CriaPasta();
@@ -1002,12 +1007,12 @@ public class Tela extends javax.swing.JFrame {
         cp.CriaPasta();
         la.LerArquivo();
         
+        if(QDT == 3){
         v = Integer.parseInt(la.v);
         TDA = Integer.parseInt(la.TDA);
         AT1 = Integer.parseInt(la.AT1);
         AT2 = Integer.parseInt(la.AT2);
-        AT3 = Integer.parseInt(la.AT3);
-        
+        AT3 = Integer.parseInt(la.AT3); 
         t0 = Integer.parseInt(la.t0);
         t1 = Integer.parseInt(la.t1);
         t2 = Integer.parseInt(la.t2);
@@ -1015,6 +1020,22 @@ public class Tela extends javax.swing.JFrame {
         t4 = Integer.parseInt(la.t4);
         t5 = Integer.parseInt(la.t5);
         t6 = Integer.parseInt(la.t6);
+        }
+        if(QDT == 4){
+        v = Integer.parseInt(la.v);
+        TDA = Integer.parseInt(la.TDA);
+        AT1 = Integer.parseInt(la.AT1);
+        AT2 = Integer.parseInt(la.AT2);
+        AT3 = Integer.parseInt(la.AT3);
+        AT4 = Integer.parseInt(la.AT4);
+        t0 = Integer.parseInt(la.t0);
+        t1 = Integer.parseInt(la.t1);
+        t2 = Integer.parseInt(la.t2);
+        t3 = Integer.parseInt(la.t3);
+        t4 = Integer.parseInt(la.t4);
+        t5 = Integer.parseInt(la.t5);
+        t6 = Integer.parseInt(la.t6);
+        }
         
         /**********************************************************************/
         
@@ -1083,11 +1104,6 @@ public class Tela extends javax.swing.JFrame {
         BOTAO_SOLICITAR_SENHA.setVisible(true);
         BOTAO_SOM.setVisible(true);
         /**************************************************/
-        
-        lerPlanilha(arquivo);
-        
-        /*QDT*/
-        QDT = Integer.parseInt(PS[0]);
         
         if(QDT == 3){
             
@@ -3040,7 +3056,7 @@ public class Tela extends javax.swing.JFrame {
                     chamar_Tecnico("0");
                     t0++;
                     BTN_CHECKLIST.setText("CHECKLIST - "+t0);
-                    ma.ModificaArquivo(v, TDA, AT1, AT2, AT3, t0, t1, t2, t3, t4, t5, t6);
+                    ma.ModificaArquivo(v, TDA, AT1, AT2, AT3, AT4, t0, t1, t2, t3, t4, t5, t6);
         }//
         ////////////////////////////////////////////////////////////////////////
        
@@ -3058,7 +3074,7 @@ public class Tela extends javax.swing.JFrame {
               chamar_Tecnico("1");
         t1++;
         BTN_RECARGA.setText("RECARGA DE CARTUCHO - "+t1);
-        ma.ModificaArquivo(v, TDA, AT1, AT2, AT3, t0, t1, t2, t3, t4, t5, t6);
+        ma.ModificaArquivo(v, TDA, AT1, AT2, AT3, AT4, t0, t1, t2, t3, t4, t5, t6);
         }//
         
     }//GEN-LAST:event_BTN_RECARGAActionPerformed
@@ -3075,7 +3091,7 @@ public class Tela extends javax.swing.JFrame {
               chamar_Tecnico("2");
         t2++;
         BTN_SITU_DIFE.setText("SITUAÇÃO DIFERENCIADA - "+t2);
-        ma.ModificaArquivo(v, TDA, AT1, AT2, AT3, t0, t1, t2, t3, t4, t5, t6);
+        ma.ModificaArquivo(v, TDA, AT1, AT2, AT3, AT4, t0, t1, t2, t3, t4, t5, t6);
         }//
         
     }//GEN-LAST:event_BTN_SITU_DIFEActionPerformed
@@ -3092,7 +3108,7 @@ public class Tela extends javax.swing.JFrame {
               chamar_Tecnico("3");
         t3++;
         BTN_TIRA_DUVI.setText("TIRAR DÚVIDA DE CLIENTE - "+t3);
-        ma.ModificaArquivo(v, TDA, AT1, AT2, AT3, t0, t1, t2, t3, t4, t5, t6);
+        ma.ModificaArquivo(v, TDA, AT1, AT2, AT3, AT4, t0, t1, t2, t3, t4, t5, t6);
         }//
         
     }//GEN-LAST:event_BTN_TIRA_DUVIActionPerformed
@@ -3109,7 +3125,7 @@ public class Tela extends javax.swing.JFrame {
               chamar_Tecnico("4");
         t4++;
         BTN_GERAR_CRED.setText("GERAR CRÉDITO - "+t4);
-        ma.ModificaArquivo(v, TDA, AT1, AT2, AT3, t0, t1, t2, t3, t4, t5, t6);
+        ma.ModificaArquivo(v, TDA, AT1, AT2, AT3, AT4, t0, t1, t2, t3, t4, t5, t6);
         }//
         
     }//GEN-LAST:event_BTN_GERAR_CREDActionPerformed
@@ -3126,7 +3142,7 @@ public class Tela extends javax.swing.JFrame {
              chamar_Tecnico("5");
         t5++;
         BTN_TROCA_GARAN.setText("TROCA EM GARANTIA - "+t5);
-        ma.ModificaArquivo(v, TDA, AT1, AT2, AT3, t0, t1, t2, t3, t4, t5, t6);
+        ma.ModificaArquivo(v, TDA, AT1, AT2, AT3, AT4, t0, t1, t2, t3, t4, t5, t6);
         }//
         
     }//GEN-LAST:event_BTN_TROCA_GARANActionPerformed
@@ -3143,7 +3159,7 @@ public class Tela extends javax.swing.JFrame {
              chamar_Tecnico("6");
         t6++;
         BTN_PLUS.setText("PLUS - "+t6);
-        ma.ModificaArquivo(v, TDA, AT1, AT2, AT3, t0, t1, t2, t3, t4, t5, t6);
+        ma.ModificaArquivo(v, TDA, AT1, AT2, AT3, AT4, t0, t1, t2, t3, t4, t5, t6);
         }//
         
     }//GEN-LAST:event_BTN_PLUSActionPerformed
